@@ -1,0 +1,16 @@
+.shoddy {
+    border: 1px solid #687782;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 8px;
+    margin-bottom: 12px;
+
+    &Time, &Parameters {
+        margin: 0;
+    }
+
+    &Parameters {
+        text-align: end;
+    }
+}

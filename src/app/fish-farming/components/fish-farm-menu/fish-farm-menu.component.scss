@@ -1,0 +1,36 @@
+.fishFamrButtonMenu {
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+.fishFarmMenu {
+    background: white;
+    box-shadow: 0 0.5rem 1rem -0.5rem #bdbdbd;
+    margin: 0 !important;
+    list-style: none;
+    padding: 4px !important;
+    text-align: left;
+}
+
+.fishFarmMenuNav {
+    animation-name: navBar;
+    animation-duration: 1s;
+    display: block;
+    position: absolute;
+    right: 16px;
+}
+
+.nofishFarmMenuNav {
+    display: none;
+}
+
+.fishFarmMenuItem {
+    padding: 4px 8px;
+}
+
+.fishFarmMenuLink {
+    color: #687782;
+    text-decoration: none;
+    font-size: 14px;
+}

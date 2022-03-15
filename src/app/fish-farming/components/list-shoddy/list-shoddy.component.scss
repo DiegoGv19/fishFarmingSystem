@@ -1,0 +1,11 @@
+.listShoddy {
+    &Head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+        &Title {
+            text-align: end;
+        }
+    }
+}
+

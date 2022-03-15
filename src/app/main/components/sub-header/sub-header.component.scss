@@ -1,0 +1,37 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.subHeaderMenu {
+    display: flex;
+    list-style: none;
+    padding: 24px 0 8px;
+}
+
+.subHeaderMenuLink {
+    color: #687782;
+    display: flex;
+    justify-content: center;
+    margin-left: 8px;
+    text-decoration: none;
+    font-size: 14px;
+
+    & div {
+        display: inline-block;
+    }
+
+    &:first-child {
+        margin-right: 20px;
+    }
+
+    & span {
+        display: none;
+        padding-left: 8px;
+    }
+
+    @media only screen and (min-width: $width-medium) {
+        & span {
+            display: block;
+        }
+    }
+}

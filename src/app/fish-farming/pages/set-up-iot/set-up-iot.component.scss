@@ -1,0 +1,33 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.setUpIotGrid {
+    grid-template-columns: 1fr;
+    
+    @media only screen and (min-width: $width-long) {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.setUpIotContainer {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    padding: 48px 8px 8px;
+    position: relative;
+}
+
+.setUpIotTitle {
+    background: white;
+    font-size: 16px;
+    left: 16px;
+    position: absolute;
+    top: -16px;
+
+    & p {
+        margin: 0;
+        padding: 4px 8px;
+    }
+}

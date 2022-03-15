@@ -1,0 +1,43 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.addFishFarmContainer {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    padding: 24px 16px 12px;
+    position: relative;
+
+    &:after {
+        background: white;
+        content: 'Nueva piscigranja';
+        left: 16px;
+        padding: 4px 8px;
+        position: absolute;
+        text-align: center;
+        font-size: 16px;
+        top: -16px;
+    }
+}
+
+.addFishFarmGrid {
+    grid-template-columns: 1fr;
+    
+    @media only screen and (min-width: $width-long) {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+.btn-outline-info {
+    margin-top: 380px;
+
+    &:hover {
+        color: white;
+    }
+}
+
+.btn-primary {
+    margin-top: 8px;
+}

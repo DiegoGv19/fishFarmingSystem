@@ -1,0 +1,30 @@
+.listFishFarms {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    min-height: 81vh;
+    padding: 24px 16px 0;
+    position: relative;
+
+    &:after {
+        background: white;
+        content: 'Piscigranjas';
+        left: 16px;
+        padding: 4px 8px;
+        position: absolute;
+        text-align: center;
+        font-size: 16px;
+        top: -16px;
+    }
+}
+
+.listFishFarmsHead{
+    display: flex;
+}
+
+.listFishFarmsHeadTitle {
+    width: 50%;
+
+    &:last-child {
+        text-align: right;
+    }
+}

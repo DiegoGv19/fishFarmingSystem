@@ -1,0 +1,15 @@
+.confirmationMessage {
+    background: white;
+    border: 1px solid #687782;
+    border-radius: 8px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 256px;
+}
+
+.confirmationMessageText {
+    font-weight: bold;
+}

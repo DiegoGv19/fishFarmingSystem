@@ -1,0 +1,11 @@
+
+
+.shoddyInformation {
+    text-align: center;
+    margin-top: 8px;
+    &Head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        font-weight: bold;
+    }
+}

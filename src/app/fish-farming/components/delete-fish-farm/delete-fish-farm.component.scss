@@ -1,0 +1,40 @@
+.deleteFishFarmHide {
+    display: none;
+}
+
+.deleteFishFarm {
+    background: white;
+    border: 1px solid #687782;
+    border-radius: 8px;
+    max-width: 400px;
+    left: 50%;
+    padding: 20px;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    top: 50%;
+
+    &Buttons {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    &Name {
+        font-size: 22px;
+        font-weight: bold;
+
+    }
+    
+    &Question {
+        font-size: 20px;
+    }
+}
+
+.deleteFishFarmNoHide {
+    display: block;
+}
+
+.btn-primary {
+    margin-top: 20px;
+}

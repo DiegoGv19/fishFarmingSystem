@@ -1,0 +1,25 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.userGridContainer {
+    @media only screen and (min-width: $width-medium) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+.userMainContainer { 
+    max-width: 400px;
+    min-height: 100vh;
+    padding-top: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    @media only screen and (min-width: $width-medium) {
+        grid-column: 2;
+        margin: 0;
+    }
+}

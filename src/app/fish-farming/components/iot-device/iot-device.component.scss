@@ -1,0 +1,36 @@
+.fishFarmIoTSensor {
+    padding: 6px;
+    width: 78px;
+
+    & p {
+        margin: 0;
+    }
+
+    & img {
+        height: 64px;
+        width: 100%;
+
+    }
+}
+
+.sensorActive, .sensorNoActive {
+    position: relative;
+}
+
+.sensorActive::after, .sensorNoActive::after {
+    border-radius: 50%;
+    content: " ";
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    width: 20px;
+}
+
+.sensorActive::after {
+    background: green;
+}
+
+.sensorNoActive::after {
+    background: red;
+}

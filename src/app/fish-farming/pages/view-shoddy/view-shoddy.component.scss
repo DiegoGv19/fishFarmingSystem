@@ -1,0 +1,32 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.viewShoddyContainer {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    padding: 48px 8px 8px;
+    position: relative;
+
+    & h2 {
+        font-size: 16px;
+    }
+}
+
+.shoddyDate {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.shoddyTitle {
+    background: white;
+    font-size: 16px;
+    left: 16px;
+    position: absolute;
+    top: -16px;
+    
+    & p {
+        margin: 0;
+        padding: 4px 8px;
+    }
+}

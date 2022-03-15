@@ -1,0 +1,17 @@
+<div class="viewFishFarmContainer">
+    <div>
+        <app-sub-header [subMenus]='subMenus'></app-sub-header>
+        <div class="viewFishFarmInformaction">
+            <div class="fishFarmTitle">
+                <p>Piscigranja de reproductores</p>
+            </div>
+            <app-fish-farm-menu></app-fish-farm-menu>
+            <app-fish-farm-information></app-fish-farm-information>
+            <app-fish-farm-iot></app-fish-farm-iot>
+        </div>
+    </div>
+    <div class="view">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<app-delete-fish-farm></app-delete-fish-farm>

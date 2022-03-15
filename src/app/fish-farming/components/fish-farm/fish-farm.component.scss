@@ -1,0 +1,26 @@
+.fishFarm {
+    align-items: center;
+    border: 1px solid #687782;
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 16px;
+    padding: 4px 8px;
+
+    &Date, &Name {
+        width: 50%;
+    }
+
+    &Date {
+        margin: 0;
+        padding-left: 16px;
+        text-align: right;
+    }
+
+    &Name {
+        color: #003e6b;
+        padding-right: 16px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+    }
+}

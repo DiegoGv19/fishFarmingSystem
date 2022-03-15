@@ -1,0 +1,53 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.mainHeader {
+    align-items: center;
+    border-bottom: 1px solid #ecf0f3;
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+    left: 0;
+    padding: 0 12px;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+    @media only screen and (min-width: $width-medium) {
+        padding: 0 112px;
+    }
+    
+    @media only screen and (min-width: $width-long) {
+        padding: 0 164px;
+    }
+}
+
+.headerLogo {
+    height: 48px;
+}
+
+.headerProfile {
+    align-items: center;
+    display: flex;
+    height: 64px;
+    position: relative;
+}
+
+.headerProfileImage {
+    height: 32px;
+}
+
+.headerProfileImageContent {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+}
+
+.headerProfileName {
+    margin: 0 16px 0 0;
+    display: none;
+    @media only screen and (min-width: $width-medium) {
+        display: block;
+    }
+}

@@ -1,0 +1,35 @@
+<div class="addFishFarmGrid">
+    <div>
+        <app-sub-header [subMenus]='subMenus'></app-sub-header>
+        <div class="addFishFarmContainer">
+            <form action="#">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nombre de usuario o correo electrónico</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Descripción (opcional)</label>
+                    <textarea class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Tipo de pez (opcional)</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected value="0">Pez</option>
+                        <option value="1">Tilapia</option>
+                        <option value="2">Piraña</option>
+                        <option value="3">Bonito</option>
+                    </select>
+                </div>
+                <div class="d-grid gap-2 col-8 mx-auto">
+                    <button type="submit" class="btn btn-outline-info">Guardar sin configuración</button>
+                </div>
+                <div class="d-grid gap-2 col-8 mx-auto">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

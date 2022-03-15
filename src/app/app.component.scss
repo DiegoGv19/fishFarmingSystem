@@ -1,0 +1,27 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+*,*::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.mainContainer {
+    min-height: 100vh;
+    max-width: 100vw;
+    margin: 0 8px;
+    padding: 0 4px;
+    
+    @media only screen and (min-width: $width-medium) {
+        margin: 0 64px;
+        padding: 0 16px;
+    }
+    
+    @media only screen and (min-width: $width-long) {
+        margin: 0 80px;
+        padding: 0 28px;
+    }
+}

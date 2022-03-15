@@ -1,0 +1,15 @@
+.form-select {
+    width: 170px;
+}
+
+.shoddyFilter {
+    align-items: center;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+
+    &Label {
+        margin-right: 12px;
+        white-space: nowrap;
+    }
+}

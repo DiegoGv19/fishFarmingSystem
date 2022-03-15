@@ -1,0 +1,42 @@
+.generalConfigurationContainer {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    padding: 24px 16px 12px;
+    position: relative;
+
+    &:after {
+        background: white;
+        content: 'Configuración general de compuertas';
+        left: 16px;
+        padding: 4px 8px;
+        position: absolute;
+        text-align: center;
+        font-size: 16px;
+        top: -16px;
+    }
+}
+
+.form-check:first-child {
+    margin-right: 16px;
+}
+
+.generalConfigurationCheckInput {
+    display: flex;
+}
+
+.generalConfigurationHelp {
+    font-size: 12px;
+}
+
+.generalConfigurationSelect {
+    display: flex;
+    align-items: center;
+
+    & .form-select {
+        width: 64px;
+    }
+
+    & p {
+        margin: 0 0 0 8px;
+    }
+}
