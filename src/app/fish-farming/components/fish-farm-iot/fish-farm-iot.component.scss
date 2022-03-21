@@ -17,3 +17,13 @@
     text-align: center;
     overflow-wrap: break-word;
 }
+
+.noSensor {
+    color: #dc3545;
+    text-align: center;
+    width: 100%;
+    & p {
+        font-size: 12px;
+        margin: 0 0 8px;
+    }
+}

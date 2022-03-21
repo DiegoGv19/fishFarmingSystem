@@ -4,26 +4,36 @@
 <div class="fishFarmIoTContainer">
     <h3>Sensores de temperatura</h3>
     <div  class="fishFarmIoTSensorContainer">
-        <app-iot-device></app-iot-device>
-        <app-iot-device></app-iot-device>
+        <app-iot-device *ngFor="let temperature of listTemperature" [iotDevice]="temperature"></app-iot-device>
+        <div class="noSensor" *ngIf="listTemperature.length == 0">
+            <p>No hay ningun sensor de temperatura registrado.</p>
+        </div>
     </div>
 </div>
 <div class="fishFarmIoTContainer">
     <h3>Sensores de pH</h3>
-    <div  class="fishFarmIoTSensorContainer">
-        <app-iot-device></app-iot-device>
-        <app-iot-device></app-iot-device>
+    <div class="fishFarmIoTSensorContainer">
+        <app-iot-device *ngFor="let ph of listPh" [iotDevice]="ph"></app-iot-device>
+        <div class="noSensor" *ngIf="listPh.length == 0">
+            <p>No hay ningun sensor de ph registrado.</p>
+        </div>
     </div>
 </div>
 <div class="fishFarmIoTContainer">
     <h3>Sensores de oxígeno disuelto</h3>
     <div  class="fishFarmIoTSensorContainer">
-        <app-iot-device></app-iot-device>
+        <app-iot-device *ngFor="let do of listDo" [iotDevice]="do"></app-iot-device>
+        <div class="noSensor" *ngIf="listDo.length == 0">
+            <p>No hay ningun sensor de oxigeno disuelto registrado.</p>
+        </div>
     </div>
 </div>
 <div class="fishFarmIoTContainer">
     <h3>Compuertas</h3>
     <div  class="fishFarmIoTSensorContainer">
-        <app-iot-device></app-iot-device>
+        <app-iot-device *ngFor="let compuerta of listCompuertas" [iotDevice]="compuerta"></app-iot-device>
+        <div class="noSensor" *ngIf="listCompuertas.length == 0">
+            <p>No hay ninguna compuerta registrado.</p>
+        </div>
     </div>
 </div>

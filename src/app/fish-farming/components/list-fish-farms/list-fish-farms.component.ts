@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { listFishFarm } from '../../interfaces/listFishFarm.interface';
 
 @Component({
   selector: 'app-list-fish-farms',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-fish-farms.component.scss']
 })
 export class ListFishFarmsComponent {
+  @Input() listFishFarm: Array<listFishFarm> = [];
 }

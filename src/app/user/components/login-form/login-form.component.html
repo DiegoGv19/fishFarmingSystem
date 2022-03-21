@@ -1,11 +1,11 @@
-<form>
+<form (ngSubmit)="login()">
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Nombre de usuario o correo electrónico</label>
-        <input type="text" class="form-control">
+        <label for="Email" class="form-label">Nombre de usuario o correo electrónico</label>
+        <input type="text" name="Email" [(ngModel)]="auth.Email" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-        <input type="password" class="form-control">
+        <label for="Password" class="form-label">Contraseña</label>
+        <input type="password" name="Password" [(ngModel)]="auth.Password" class="form-control">
     </div>
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">

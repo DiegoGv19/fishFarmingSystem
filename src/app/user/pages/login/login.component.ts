@@ -11,7 +11,7 @@ import { HeaderData } from '../../components/header/interfaces/headerData.interf
 export class LoginComponent {
     
     headerData: HeaderData = {
-        image: 'https://1000marcas.net/wp-content/uploads/2020/02/Google-logo.jpg',
+        image: 'https://igoumicdn.com/uploads/portfolio/Fish-Farm-Logo.jpg',
         title: 'Inicia Sesión',
         paragraph: 'Inicia sesión con tu usuario o correo electrónico y contraseña brindados por nosotros'
     }

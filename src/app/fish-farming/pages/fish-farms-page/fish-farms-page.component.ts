@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SubMenu } from '../../../main/components/sub-header/interfaces/subMenu.iterface';
+
+import { FishFarmService } from '../../services/fish-farm.service';
+
+import { findFishFarm } from '../../interfaces/findFishFarm.interface';
+import { listFishFarm } from '../../interfaces/listFishFarm.interface';
 
 @Component({
   selector: 'app-fish-farms-page',
   templateUrl: './fish-farms-page.component.html',
   styleUrls: ['./fish-farms-page.component.scss']
 })
-export class FishFarmsPageComponent {
-
+export class FishFarmsPageComponent implements OnInit {
+    public listFishFarm: Array<listFishFarm> = [];
     public hideContainer: boolean = true;
     public subMenus: Array<SubMenu> = [
         {
@@ -24,5 +29,19 @@ export class FishFarmsPageComponent {
       }
     ]
 
+    public constructor(private fishFarmService: FishFarmService){}
 
+    ngOnInit(): void {
+        this.findListFishFarms();
+    }
+
+    public findListFishFarms(): void {
+        this.fishFarmService.findFishFarms().subscribe(
+            (findFishFarm: findFishFarm) => {
+                if( findFishFarm.Code == '200') {
+                    this.listFishFarm = findFishFarm.FishFarms;
+                }
+            }
+        )
+    }
 }

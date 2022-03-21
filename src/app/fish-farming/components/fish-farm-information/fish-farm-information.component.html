@@ -9,15 +9,15 @@
     <tbody>
         <tr>
             <td>Temperatura</td>
-            <td>22 °C</td>
+            <td>{{ fishFarm!.LastTemperature | number: '1.2-2' }} °C</td>
         </tr>
         <tr>
             <td>pH</td>
-            <td>6,5</td>
+            <td>{{ fishFarm!.LastPh | number: '1.2-2' }}</td>
         </tr>
         <tr>
             <td>Oxígeno Disuelto</td>
-            <td>10.1 mg/L</td>
+            <td>{{ fishFarm!.LastDo | number: '1.2-2' }}</td>
         </tr>
     </tbody>
 </table>

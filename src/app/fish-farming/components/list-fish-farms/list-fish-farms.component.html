@@ -8,8 +8,9 @@
         </div>
     </div>
     <div>
-        <app-fish-farm></app-fish-farm>
-        <app-fish-farm></app-fish-farm>
-        <app-fish-farm></app-fish-farm>
+        <app-fish-farm *ngFor="let fishFarm of listFishFarm" [fishFarm]="fishFarm"></app-fish-farm>
+    </div>
+    <div class="noListFishFarms" *ngIf="listFishFarm.length == 0">
+        <p>No hay ninguna piscigranja registrada.</p>
     </div>
 </div>

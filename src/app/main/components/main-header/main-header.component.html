@@ -1,10 +1,10 @@
 <header class="mainHeader">
     <a href="fish-farm">
-        <img src="https://1000marcas.net/wp-content/uploads/2020/02/Google-logo.jpg" alt="Logo" class="headerLogo">
+        <img src="https://igoumicdn.com/uploads/portfolio/Fish-Farm-Logo.jpg" alt="Logo" class="headerLogo">
     </a>
     <div class="headerProfile">
         <div class="headerProfileImageContent" (click)="onChangeToggleNavBar()">
-            <p class="headerProfileName">Mi nombre</p>
+            <p class="headerProfileName">{{ user.Name }}</p>
             <img src="https://www.attendit.net/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg" alt="images" class="headerProfileImage">
         </div>
         <app-main-nav-bar [toggleNavBar]="toggleNavBar"></app-main-nav-bar>

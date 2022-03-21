@@ -2,6 +2,11 @@ $width-small: 400px;
 $width-medium: 800px;
 $width-long: 1200px;
 
+p {
+    margin: 0;
+    cursor: pointer;
+}
+
 .navBar {
     animation-name: navBar;
     animation-duration: 1s;

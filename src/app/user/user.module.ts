@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NgModule }     from '@angular/core';
 
 import { EmailForPasswordChangeSentComponent } from './pages/email-for-password-change-sent/email-for-password-change-sent.component';
@@ -15,7 +16,6 @@ import { ResetPasswordFormComponent } from './components/reset-password-form/res
 import { RestorePasswordFormComponent } from './components/restore-password-form/restore-password-form.component';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 
-import { AppRoutingModule } from '../app-routing.module';
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
@@ -33,18 +33,11 @@ import { UserRoutingModule } from './user-routing.module';
         UserPageComponent,
         RestorePasswordFormComponent,
     ],
-    exports: [
-        EmailForPasswordChangeSentComponent,
-        LoginComponent,
-        ResetPasswordComponent,
-        RestorePasswordComponent,
-        SuccessfulPasswordResetComponent,
-        SignUpComponent,
-        UserPageComponent
-    ],
+    exports: [],
     imports: [
         UserRoutingModule,
-        CommonModule
+        CommonModule,
+        FormsModule
     ]
 })
 

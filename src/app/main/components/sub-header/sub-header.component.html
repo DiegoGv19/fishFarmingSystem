@@ -1,6 +1,6 @@
 <ul class="subHeaderMenu">
     <li *ngFor="let subMenu of subMenus">
-        <a class="subHeaderMenuLink" href="#" (click)="onChangeHideContainer()">
+        <a class="subHeaderMenuLink" (click)="onChangeHideContainer(subMenu.url)">
             <div [innerHTML]="subMenu.image"></div>
             <span>{{ subMenu.name }}</span>
         </a>
