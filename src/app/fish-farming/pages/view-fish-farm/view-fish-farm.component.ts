@@ -44,7 +44,6 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
                     this.fishFarmService.getDevices();
                 }
             )
-            console.log(this.id);
         });
 
         

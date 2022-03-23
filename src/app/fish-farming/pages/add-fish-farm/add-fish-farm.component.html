@@ -1,10 +1,10 @@
 <div class="addFishFarmGrid">
-    <div>
+    <div class="addFishFarmContainerGrid">
         <app-sub-header [subMenus]='subMenus'></app-sub-header>
         <div class="addFishFarmContainer">
-            <form action="#">
+            <form class="addFishFarmForm" action="#">
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nombre de usuario o correo electrónico</label>
+                    <label for="exampleInputEmail1" class="form-label">Nombre de piscigranja</label>
                     <input type="text" class="form-control">
                 </div>
                 <div class="mb-3">
@@ -20,11 +20,9 @@
                         <option value="3">Bonito</option>
                     </select>
                 </div>
-                <div class="d-grid gap-2 col-8 mx-auto">
-                    <button type="submit" class="btn btn-outline-info">Guardar sin configuración</button>
-                </div>
-                <div class="d-grid gap-2 col-8 mx-auto">
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <div class="addFishFarmFormContainerButton">
+                    <button type="submit" class="addFishFarmFormButton btn btn-outline-info">Guardar sin configuración</button>
+                    <button type="submit" class="addFishFarmFormButton btn btn-primary">Guardar cambios</button>
                 </div>
             </form>
         </div>

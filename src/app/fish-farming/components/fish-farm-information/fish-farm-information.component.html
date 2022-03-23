@@ -9,15 +9,18 @@
     <tbody>
         <tr>
             <td>Temperatura</td>
-            <td>{{ fishFarm!.LastTemperature | number: '1.2-2' }} °C</td>
+            <td *ngIf="fishFarm!.LastTemperature">{{ fishFarm!.LastTemperature | number: '1.2-2' }} °C</td>
+            <td *ngIf="!fishFarm!.LastTemperature">-</td>
         </tr>
         <tr>
             <td>pH</td>
-            <td>{{ fishFarm!.LastPh | number: '1.2-2' }}</td>
+            <td *ngIf="fishFarm!.LastPh">{{ fishFarm!.LastPh | number: '1.2-2' }}</td>
+            <td *ngIf="!fishFarm!.LastPh">-</td>
         </tr>
         <tr>
             <td>Oxígeno Disuelto</td>
-            <td>{{ fishFarm!.LastDo | number: '1.2-2' }}</td>
+            <td *ngIf="fishFarm!.LastDo">{{ fishFarm!.LastDo | number: '1.2-2' }}</td>
+            <td *ngIf="!fishFarm!.LastDo">-</td>
         </tr>
     </tbody>
 </table>

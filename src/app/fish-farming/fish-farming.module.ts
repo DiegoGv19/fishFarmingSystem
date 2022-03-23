@@ -30,6 +30,7 @@ import { ShoddyInformationComponent }     from './components/shoddy-information/
 import { ShoddyComponent }                from './components/shoddy/shoddy.component';
 
 import { MainModule } from '../main/main.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -62,6 +63,7 @@ import { MainModule } from '../main/main.module';
     imports: [
         CommonModule,
         FishFarmingRoutingModule,
+        FormsModule,
         MainModule
     ]
 })

@@ -3,8 +3,9 @@ import { SubMenu } from '../../../main/components/sub-header/interfaces/subMenu.
 
 import { FishFarmService } from '../../services/fish-farm.service';
 
-import { findFishFarm } from '../../interfaces/findFishFarm.interface';
-import { listFishFarm } from '../../interfaces/listFishFarm.interface';
+import { AuthService } from 'src/app/user/services/auth.service';
+import { fishFarmAbbreviated } from '../../interfaces/fishFarmAbbreviated.interface';
+import { fishFarms } from '../../interfaces/fishFarms.interface';
 
 @Component({
   selector: 'app-fish-farms-page',
@@ -12,7 +13,7 @@ import { listFishFarm } from '../../interfaces/listFishFarm.interface';
   styleUrls: ['./fish-farms-page.component.scss']
 })
 export class FishFarmsPageComponent implements OnInit {
-    public listFishFarm: Array<listFishFarm> = [];
+    public listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];
     public hideContainer: boolean = true;
     public subMenus: Array<SubMenu> = [
         {
@@ -37,9 +38,9 @@ export class FishFarmsPageComponent implements OnInit {
 
     public findListFishFarms(): void {
         this.fishFarmService.findFishFarms().subscribe(
-            (findFishFarm: findFishFarm) => {
-                if( findFishFarm.Code == '200') {
-                    this.listFishFarm = findFishFarm.FishFarms;
+            (fishFarms: fishFarms) => {
+                if(fishFarms.Code == '200') {
+                    this.listFishFarmAbbreviated = fishFarms.FishFarms;
                 }
             }
         )

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { listFishFarm } from '../../interfaces/listFishFarm.interface';
+import { fishFarmAbbreviated } from '../../interfaces/fishFarmAbbreviated.interface';
 
 @Component({
   selector: 'app-fish-farm',
@@ -7,6 +7,6 @@ import { listFishFarm } from '../../interfaces/listFishFarm.interface';
   styleUrls: ['./fish-farm.component.scss']
 })
 export class FishFarmComponent {
-  @Input() fishFarm: listFishFarm | undefined;
+  @Input() fishFarmAbbreviated: fishFarmAbbreviated | undefined;
 
 }

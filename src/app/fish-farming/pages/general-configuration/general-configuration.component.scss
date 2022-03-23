@@ -1,3 +1,20 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.confirmationContainer {
+    &::after {
+        content: '';
+        background: white;
+        height: calc(100vh - 64px);
+        opacity: 0.2;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+}
+
 .generalConfigurationContainer {
     border: 1px solid #687782;
     border-radius: 8px;
@@ -12,8 +29,29 @@
         position: absolute;
         text-align: center;
         font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
         top: -16px;
+        width: 70%;
+        white-space: nowrap;
+
+        @media only screen and (min-width: $width-medium) {
+            width: 60%;
+        }
     }
+}
+.generalConfigurationContainerGrid, .generalConfigurationGrid {
+    display: grid;
+}
+
+.generalConfigurationContainerGrid {
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+}
+
+.generalConfigurationGrid {
+    grid-template-columns: 1fr 2fr;
+    height: 100%;
 }
 
 .form-check:first-child {
@@ -28,15 +66,26 @@
     font-size: 12px;
 }
 
-.generalConfigurationSelect {
+.generalConfigurationFormTime {
     display: flex;
     align-items: center;
-
-    & .form-select {
-        width: 64px;
+    & .form-control {
+        width: 128px;
     }
-
     & p {
         margin: 0 0 0 8px;
+    }
+}
+
+.generalConfigurationForm {
+    height: 100%;
+    position: relative;
+
+    &Butoon {
+        bottom: 0;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 100%;
     }
 }

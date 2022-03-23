@@ -5,6 +5,7 @@ $width-long: 1200px;
 .addFishFarmContainer {
     border: 1px solid #687782;
     border-radius: 8px;
+    height: 100%;
     padding: 24px 16px 12px;
     position: relative;
 
@@ -20,13 +21,39 @@ $width-long: 1200px;
     }
 }
 
+.addFishFarmContainerGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+    height: 100%;
+}
+
 .addFishFarmGrid {
     grid-template-columns: 1fr;
+    height: 100%;
     
     @media only screen and (min-width: $width-long) {
         display: grid;
         gap: 16px;
         grid-template-columns: 1fr 2fr;
+    }
+}
+
+.addFishFarmForm {
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    &Button {
+        width: 100%;
+    }
+
+    &ContainerButton {
+        bottom: 0;
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        width: 100%;
     }
 }
 

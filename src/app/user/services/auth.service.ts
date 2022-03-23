@@ -63,7 +63,7 @@ export class AuthService {
         return this._httpOptions;
     }
 
-    public setHttpOptions(authorization: boolean = false): void {
+    public setHttpOptions(): void {
         this._httpOptions = new HttpHeaders({
             "Content-Type" : "application/json",
             "Authorization":  `Bearer ${this._user!.Token}`
@@ -82,8 +82,16 @@ export class AuthService {
         return auth;
     }
 
-    public setAuth(auth: Auth) {
+    public setAuth(auth: Auth): void {
         auth.Password =shajs('sha256').update(auth.Password).digest('hex');
         this._auth = auth;
+    }
+
+    public verifyAuth(): boolean {
+        if(this._auth!.Email == '' && this._auth!.Password == '') {
+            return false
+        }
+
+        return true;
     }
 }

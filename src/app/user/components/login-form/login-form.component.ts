@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginFormComponent {
     
+    public _verifyLogin: boolean = false;
     public auth: Auth = {
         Email: '',
         Password: ''
@@ -18,17 +19,27 @@ export class LoginFormComponent {
 
     constructor( private router: Router, private authService: AuthService ) {}
 
+    public get verifyLogin(): boolean {
+        return this._verifyLogin;
+    }
+
     public login() {
         this.authService.setAuth({...this.auth});
-        this.authService.login().subscribe( user => {
-            if(user.Code == '200') {
-                this.router.navigate(['./fish-farm'])
-            }
-
-            else {
-              this.router.navigate(['./user/login'])
-            }
-        })
+        if(this.authService.verifyAuth()) {
+            this.authService.login().subscribe( user => {
+                if(user.Code == '200') {
+                    this._verifyLogin = false;
+                    this.authService.setHttpOptions();
+                    this.router.navigate(['./fish-farm']);
+                }
+                else {
+                    this._verifyLogin = true;
+                }
+            })
+        }
+        else {
+            this._verifyLogin = true;
+        }
         
     }
 }

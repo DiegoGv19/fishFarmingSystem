@@ -1,4 +1,4 @@
-export interface listFishFarm {
+export interface fishFarmAbbreviated {
     Id                 : string;
     Name               : string;
     PoorQualityLastTime: string;

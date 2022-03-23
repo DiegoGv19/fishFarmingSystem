@@ -2,8 +2,17 @@ $width-small: 400px;
 $width-medium: 800px;
 $width-long: 1200px;
 
-.viewFishFarmContainer {
+.viewFishFarmContainerGrid, .viewFishFarmGrid {
     display: grid;
+    height: 100%;
+}
+
+.viewFishFarmContainerGrid {
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+}
+
+.viewFishFarmGrid {
     grid-template-columns: 1fr;
 
     @media only screen and (min-width: $width-long) {

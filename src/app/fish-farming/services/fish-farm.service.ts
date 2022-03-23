@@ -5,9 +5,11 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/main/services/api.service';
 import { AuthService } from 'src/app/user/services/auth.service';
 
-import { findFishFarm } from '../interfaces/findFishFarm.interface';
 import { fishFarm } from '../interfaces/fishFarm.interface';
 import { Device } from '../interfaces/device.interface';
+import { generalConfiguration } from '../interfaces/generalConfiguration.interface';
+import { fishFarms } from '../interfaces/fishFarms.interface';
+import { response } from '../interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ import { Device } from '../interfaces/device.interface';
 export class FishFarmService {
 
     private _url_find_fish_farms: string = 'FishFarms';
+    private _url_find_fish_farms_configuration: string = 'FishFarms/Config';
     private _url_view_fish_farm : string = 'FishFarms';
 
     private _listTemperature: Array<Device> = [];
@@ -29,27 +32,29 @@ export class FishFarmService {
         Devices         : [],
         Code            : ''
     };
-
+    private _generalConfiguration: generalConfiguration = {
+        WayToOpenGates : '',
+        TimeToOpenGates: 0,
+        Code           : '',
+    }
 
     constructor(private http: HttpClient, private authService: AuthService, private apiService: ApiService) { }
 
-    public setFishFarm(fishFarm: fishFarm) {
-        this._fishFarm = fishFarm;
-    }
 
     public get fishFarm(): fishFarm {
         return this._fishFarm;
     }
 
-    public resetFishFarm() {
-        this._fishFarm = {
-            Name            : '',
-            LastTemperature : 0,
-            LastPh          : 0,
-            LastDo          : 0,
-            Devices         : [],
-            Code            : ''
-        };
+    public setFishFarm(fishFarm: fishFarm) {
+        this._fishFarm = fishFarm;
+    }
+
+    public get generalConfiguration(): generalConfiguration {
+        return this._generalConfiguration;
+    }
+
+    public setGeneralConfiguration(generalConfiguration: generalConfiguration): void {
+        this._generalConfiguration = generalConfiguration;
     }
 
     public get listTemperature(): Array<Device> {
@@ -68,6 +73,8 @@ export class FishFarmService {
         return this._listCompuertas;
     }
 
+    /****************************************************************************************** */
+
     public getDevices() {
         for( let device of this.fishFarm.Devices) {
             if(device.Type == 'temp') {
@@ -85,6 +92,17 @@ export class FishFarmService {
         }
     }
 
+    public resetFishFarm() {
+        this._fishFarm = {
+            Name            : '',
+            LastTemperature : 0,
+            LastPh          : 0,
+            LastDo          : 0,
+            Devices         : [],
+            Code            : ''
+        };
+    }
+
     public setDevice() {
         this._listTemperature = [];
         this._listPh = [];
@@ -92,8 +110,18 @@ export class FishFarmService {
         this._listCompuertas = [];
     }
 
-    public findFishFarms(): Observable<findFishFarm> {
-        return this.http.get<findFishFarm>(`${this.apiService.urlApi}/${this._url_find_fish_farms}`, { headers: this.authService.httpOptions });
+    /****************************************************************************************** */
+
+    public findFishFarms(): Observable<fishFarms> {
+        return this.http.get<fishFarms>(`${this.apiService.urlApi}/${this._url_find_fish_farms}`, { headers: this.authService.httpOptions });
+    }
+
+    public findFishFarmConfiguration(): Observable<generalConfiguration> {
+        return this.http.get<generalConfiguration>(`${this.apiService.urlApi}/${this._url_find_fish_farms_configuration}`, { headers: this.authService.httpOptions });
+    }
+    
+    public updateFishFarmConfiguration(): Observable<response> {
+        return this.http.put<response>(`${this.apiService.urlApi}/${this._url_find_fish_farms_configuration}`, this._generalConfiguration, { headers: this.authService.httpOptions });
     }
 
     public viewFishFarm(fishFarmId: string): Observable<fishFarm> {

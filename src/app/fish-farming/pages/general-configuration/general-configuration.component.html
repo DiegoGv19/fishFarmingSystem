@@ -1,39 +1,40 @@
-<app-sub-header [subMenus]='subMenus'></app-sub-header>
-<div class="generalConfigurationContainer">
-    <form action="#">
-        <div>
-            <p>Abrir compuertas de manera</p>
-            <div class="generalConfigurationCheckInput">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="doorsOptionButton">
-                    <label class="form-check-label">Automática</label>
+<div class="generalConfigurationGrid">
+    <div class="generalConfigurationContainerGrid">
+        <app-sub-header [subMenus]='subMenus'></app-sub-header>
+        <div class="generalConfigurationContainer">
+            <form class="generalConfigurationForm" (ngSubmit)="updateGeneralConfiguration()">
+                <div>
+                    <p>Abrir compuertas de manera</p>
+                    <div class="generalConfigurationCheckInput">
+                        <div class="form-check">
+                            <input class="form-check-input" value="automatic" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates">
+                            <label class="form-check-label">Automática</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" value="manual" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates">
+                            <label class="form-check-label">Manual</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="doorsOptionButton">
-                    <label class="form-check-label">Manual</label>
+                <br>
+                <div>
+                    <div class="mb-3">
+                        <label for="TimeToOpenGates" class="form-label">Tiempo en que iniciarán a abrirse</label>
+                        <div class="generalConfigurationFormTime">
+                            <input type="text" name="TimeToOpenGates" [(ngModel)]="generalConfiguration.TimeToOpenGates" class="form-control">
+                            <p>minuto(s)</p>
+                        </div>
+                    </div>
+                    <div class="generalConfigurationHelp">
+                        <p>El tiempo mínimo es 0 minutos y el máximo es 30 minutos</p>
+                    </div>
                 </div>
-            </div>
+                <br>
+                <button type="submit" class="generalConfigurationFormButoon btn btn-primary">Guardar cambios</button>
+            </form>
         </div>
-        <div>
-            <p>Tiempo en que iniciarán a abrirse</p>
-            <div>
-                <div class="generalConfigurationSelect">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                    <p>minuto(s)</p>
-                </div>
-                <div class="generalConfigurationHelp">
-                    <p>El tiempo mínimo es 0 minutos y el máximo es 30 minutos</p>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        </div>
-    </form>
+    </div>
+</div>
+<div *ngIf="alertUpdateGeneralConfiguration" class="confirmationContainer">
+    <app-confirmation-message (continueEvent)="confirmationContinue( $event )"></app-confirmation-message>
 </div>

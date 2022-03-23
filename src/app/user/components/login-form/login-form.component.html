@@ -10,8 +10,11 @@
     <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-    <button type="submit" class="w-100 btn btn-lg btn-primary">Entrar</button>
+    </div>
+    <div class="noLogin">
+        <button type="submit" class="w-100 btn btn-lg btn-primary">Entrar</button>
+        <p *ngIf="verifyLogin">La contraseña o email es incorrecto.</p>
+    </div>
     <div class="text-center mt-3">
         <a href="#" class="link-primary">Olvidé mi contraseña</a>
     </div>

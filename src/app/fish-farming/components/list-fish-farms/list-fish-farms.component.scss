@@ -7,8 +7,8 @@
 .listFishFarms {
     border: 1px solid #687782;
     border-radius: 8px;
-    min-height: 81vh;
-    padding: 24px 16px 0;
+    height: 100%;
+    padding: 24px 16px 8px;
     position: relative;
 
     &:after {
