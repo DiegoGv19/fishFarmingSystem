@@ -20,10 +20,6 @@ export class FishFarmService {
     private _url_find_fish_farms_configuration: string = 'FishFarms/Config';
     private _url_view_fish_farm : string = 'FishFarms';
 
-    private _listTemperature: Array<Device> = [];
-    private _listPh : Array<Device> = [];
-    private _listDo : Array<Device> = [];
-    private _listCompuertas : Array<Device> = [];
     private _fishFarm: fishFarm = {
         Name            : '',
         LastTemperature : 0,
@@ -37,9 +33,13 @@ export class FishFarmService {
         TimeToOpenGates: 0,
         Code           : '',
     }
-
+    private _fishFarmId : string = '';
+    private _listCompuertas : Array<Device> = [];
+    private _listDo : Array<Device> = [];
+    private _listTemperature: Array<Device> = [];
+    private _listPh : Array<Device> = [];
+    
     constructor(private http: HttpClient, private authService: AuthService, private apiService: ApiService) { }
-
 
     public get fishFarm(): fishFarm {
         return this._fishFarm;
@@ -47,6 +47,14 @@ export class FishFarmService {
 
     public setFishFarm(fishFarm: fishFarm) {
         this._fishFarm = fishFarm;
+    }
+
+    public get fishFarmId(): string {
+        return this._fishFarmId;
+    }
+
+    public setFishFarmId(fishFarmId: string): void {
+        this._fishFarmId = fishFarmId;
     }
 
     public get generalConfiguration(): generalConfiguration {
@@ -124,7 +132,7 @@ export class FishFarmService {
         return this.http.put<response>(`${this.apiService.urlApi}/${this._url_find_fish_farms_configuration}`, this._generalConfiguration, { headers: this.authService.httpOptions });
     }
 
-    public viewFishFarm(fishFarmId: string): Observable<fishFarm> {
-        return this.http.get<fishFarm>(`${this.apiService.urlApi}/${this._url_view_fish_farm}/${fishFarmId}`, { headers: this.authService.httpOptions });
+    public viewFishFarm(): Observable<fishFarm> {
+        return this.http.get<fishFarm>(`${this.apiService.urlApi}/${this._url_view_fish_farm}/${this._fishFarmId}`, { headers: this.authService.httpOptions });
     }
 }

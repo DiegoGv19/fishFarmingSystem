@@ -14,9 +14,6 @@ import { Device } from '../../interfaces/device.interface';
 })
 export class ViewFishFarmComponent implements OnInit, OnDestroy {
     private sub    : any;
-    public id: string = '';
-
-    
     public subMenus: Array<SubMenu> = [
         {
             name: 'Volver',
@@ -33,8 +30,8 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
 
     public ngOnInit() {
         this.sub = this.activateRoute.params.subscribe(params => {
-            this.id = params['id'];
-            this.fishFarmService.viewFishFarm(this.id).subscribe(
+            this.fishFarmService.setFishFarmId(params['id']);
+            this.fishFarmService.viewFishFarm().subscribe(
                 (fishFarm: fishFarm) => {
                     this.fishFarmService.setFishFarm(fishFarm);
                     if( fishFarm.Code != '200') {

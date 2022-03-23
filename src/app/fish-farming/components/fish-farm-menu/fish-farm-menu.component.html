@@ -6,13 +6,13 @@
 <nav [ngClass]="toggleFishFarmMenuNav ? 'nofishFarmMenuNav' : 'fishFarmMenuNav'">
     <ul class="fishFarmMenu">
         <li class="fishFarmMenuItem">
-            <a class="fishFarmMenuLink" href="#">Ver historial de mala calidad</a>
+            <a class="fishFarmMenuLink" routerLink="shoddy-history" (click)="hideMenu()">Ver historial de mala calidad</a>
         </li>
         <li class="fishFarmMenuItem">
-            <a class="fishFarmMenuLink" href="#">Editar</a>
+            <a class="fishFarmMenuLink" href="#" (click)="hideMenu()">Editar</a>
         </li>
         <li class="fishFarmMenuItem">
-            <a class="fishFarmMenuLink" href="#">Eliminar</a>
+            <a class="fishFarmMenuLink" href="#" (click)="hideMenu()">Eliminar</a>
         </li>
     </ul>
 </nav>

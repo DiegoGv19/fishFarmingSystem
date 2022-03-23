@@ -1,19 +1,20 @@
-<form (ngSubmit)="login()">
+<form (ngSubmit)="validateAuth()">
     <div class="mb-3">
-        <label for="Email" class="form-label">Nombre de usuario o correo electrónico</label>
+        <label for="Email" class="form-label">Correo electrónico</label>
         <input type="text" name="Email" [(ngModel)]="auth.Email" class="form-control">
+        <p *ngIf="verifyEmail" class="alertEmpty">Tiene que ingresar un correo electronico.</p>
     </div>
     <div class="mb-3">
         <label for="Password" class="form-label">Contraseña</label>
         <input type="password" name="Password" [(ngModel)]="auth.Password" class="form-control">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <p *ngIf="verifyPassword" class="alertEmpty">Tiene que ingresar su contraseña.</p>
     </div>
     <div class="noLogin">
         <button type="submit" class="w-100 btn btn-lg btn-primary">Entrar</button>
-        <p *ngIf="verifyLogin">La contraseña o email es incorrecto.</p>
+        <p *ngIf="userExists">El correo electronico no esta registrado.</p>
+        <p *ngIf="blockedAccount">Esta cuenta ha estado bloqueada durante 30 minutos.</p>
+        <p *ngIf="correctPassword">Su contraseña es incorrecta, intente nuevamente. Recuerde que luego de 5 intentos fallidos, su cuenta se bloqueará por 5 minutos.</p>
+
     </div>
     <div class="text-center mt-3">
         <a href="#" class="link-primary">Olvidé mi contraseña</a>

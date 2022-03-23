@@ -2,8 +2,24 @@ $width-small: 400px;
 $width-medium: 800px;
 $width-long: 1200px;
 
-.shoddyHistoryContainer {
+.shoddyHistoryInformaction {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    padding: 48px 8px 8px;
+    position: relative;
+}
+
+.shoddyHistoryGrid, .shoddyHistoryContainerGrid {
     display: grid;
+    height: 100%;
+}
+
+.shoddyHistoryContainerGrid {
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+}
+
+.shoddyHistoryGrid {
     grid-template-columns: 1fr;
 
     @media only screen and (min-width: $width-long) {
@@ -11,13 +27,6 @@ $width-long: 1200px;
         gap: 16px;
         grid-template-columns: 1fr 1fr;
     }
-}
-
-.shoddyHistoryInformaction {
-    border: 1px solid #687782;
-    border-radius: 8px;
-    padding: 48px 8px 8px;
-    position: relative;
 }
 
 .shoddyHistoryTitle {
