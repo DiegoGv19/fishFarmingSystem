@@ -1,0 +1,17 @@
+.addIot {
+
+    height: 100%;
+    padding: 6px;
+    width: 78px;
+
+    &Content {
+        align-items: center;
+        border: 1px solid #687782;
+        border-radius: 8px;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+
+    }
+}

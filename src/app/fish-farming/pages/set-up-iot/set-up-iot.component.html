@@ -1,41 +1,46 @@
 <div class="setUpIotGrid">
-    <div>
+    <div class="setUpIotContainerGrid">
         <app-sub-header [subMenus]='subMenus'></app-sub-header>
         <div class="setUpIotContainer">
             <div class="setUpIotTitle">
-                <p>Sensor temperatura 1</p>
+                <!-- Cambiar por el nombre de la piscigranja -->
+                <p>Piscigranja</p>
             </div>
-            <div>
+            <div class="setUpIotContainerSesors">
                 <h2>Dispositivos Iot</h2>
-
                 <div>
-                    <h3>Sensores de Temperatura</h3>
-                    <div>
-                        <div>
-                            <p>Rango Minimo</p>
-                            <p>Rango Máximo</p>
-                        </div>
-                        <div>
-                            <form action="">
-                                <div class="mb-3">
-                                    <input type="text" class="form-control">
-                                    <label class="form-label">C</label>
-                                </div>
-                                <p>> X ></p>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control">
-                                    <label class="form-label">C</label>
-                                </div>
-                            </form>
-                            <div>
-                                <div>
-                                    
-                                </div>
-                            </div>
-                        </div>
+                    <app-iot-range></app-iot-range>
+                    <!-- Se puede usar el componente app-iot-device cuando se registra un dispositivo iot -->
+                    <div class="iotFlex">
+                        <app-iot-device></app-iot-device>
+                        <app-iot-add></app-iot-add>
+                    </div>
+                </div>
+                <div>
+                    <app-iot-range></app-iot-range>
+                    <div class="iotFlex">
+                        <app-iot-device></app-iot-device>
+                        <app-iot-add></app-iot-add>
+                    </div>
+                </div>
+                <div>
+                    <app-iot-range></app-iot-range>
+                    <div class="iotFlex">
+                        <app-iot-device></app-iot-device>
+                        <app-iot-add></app-iot-add>
+                    </div>
+                </div>
+                <div>
+                    <app-iot-range></app-iot-range>
+                    <div class="iotFlex">
+                        <app-iot-device></app-iot-device>
+                        <app-iot-add></app-iot-add>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
     </div>
 </div>

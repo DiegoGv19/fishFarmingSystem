@@ -1,0 +1,30 @@
+.iot {
+    & h3 {
+        font-size: 18px;
+    }
+}
+
+.iotRange {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+
+
+    & label {
+        font-size: 12px;
+    }
+
+    &X {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        & p {
+            position: absolute;
+            top: 60%;
+            margin: 0;
+        }
+    }
+}
+
+.mb-3 {
+    margin: 0 !important;
+}

@@ -1,13 +1,18 @@
-<div class="editIotContainer">
-    <div>
+<div class="editIotGrid">
+    <div class="editIotContainerGrid">
         <app-sub-header [subMenus]='subMenus'></app-sub-header>
-        <div class="editIotInformaction">
-            <div class="editIotTitle">
-                <p>Sensor temperatura 1</p>
+    
+        <div class="editIotContainer">
+            <div class="editIotInformaction">
+                <div class="editIotTitle">
+                    <p>Sensor temperatura 1</p>
+                </div>
+                <app-iot-menu></app-iot-menu>
+                <app-iot-form></app-iot-form>
             </div>
-            <app-iot-menu></app-iot-menu>
-            <app-iot-form></app-iot-form>
         </div>
     </div>
+    <div>
+        <app-delete-iot></app-delete-iot>
+    </div>
 </div>
-<app-delete-iot></app-delete-iot>

@@ -1,0 +1,43 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.addIotContainerGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+    height: 100%;
+}
+
+
+.addIotContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media only screen and (min-width: $width-long) {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.addIotInformaction {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    padding: 24px 16px 12px;
+    position: relative;
+}
+
+.addIotTitle {
+    background: white;
+    font-size: 16px;
+    left: 16px;
+    position: absolute;
+    top: -16px;
+
+    & p {
+        margin: 0;
+        padding: 4px 8px;
+    }
+}
+

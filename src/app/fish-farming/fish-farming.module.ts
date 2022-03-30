@@ -31,6 +31,8 @@ import { ShoddyComponent }                from './components/shoddy/shoddy.compo
 
 import { MainModule } from '../main/main.module';
 import { FormsModule } from '@angular/forms';
+import { IotRangeComponent } from './components/iot-range/iot-range.component';
+import { IotAddComponent } from './components/iot-add/iot-add.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +47,7 @@ import { FormsModule } from '@angular/forms';
         FishFarmMenuComponent,
         FishFarmsPageComponent,
         GeneralConfigurationComponent,
+        IotAddComponent,
         IotDeviceComponent,
         IotFormComponent,
         IotMenuComponent,        
@@ -58,6 +61,7 @@ import { FormsModule } from '@angular/forms';
         ShoddyHistoryComponent,
         ViewFishFarmComponent,
         ViewShoddyComponent,
+        IotRangeComponent,
     ],
     exports: [],
     imports: [

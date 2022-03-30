@@ -9,6 +9,10 @@ $width-long: 1200px;
     padding: 24px 16px 12px;
     position: relative;
 
+    & h2 {
+        font-size: 18px;
+    }
+
     &:after {
         background: white;
         content: 'Nueva piscigranja';
@@ -49,7 +53,7 @@ $width-long: 1200px;
     }
 
     &ContainerButton {
-        bottom: 0;
+        bottom: 10;
         position: absolute;
         right: 50%;
         transform: translateX(50%);

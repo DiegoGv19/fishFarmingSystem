@@ -2,10 +2,9 @@ $width-small: 400px;
 $width-medium: 800px;
 $width-long: 1200px;
 
-.editIotContainer {
-    display: grid;
+.editIotGrid {
     grid-template-columns: 1fr;
-
+    height: 100%;
     @media only screen and (min-width: $width-long) {
         display: grid;
         gap: 16px;
@@ -13,10 +12,18 @@ $width-long: 1200px;
     }
 }
 
-.editIotInformaction {
+.editIotContainerGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+    height: 100%;
+}
+
+.editIotContainer {
     border: 1px solid #687782;
     border-radius: 8px;
-    padding: 48px 8px 8px;
+    height: 100%;
+    padding: 24px 16px 12px;
     position: relative;
 }
 
