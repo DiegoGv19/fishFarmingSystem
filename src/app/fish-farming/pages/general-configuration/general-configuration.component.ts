@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { SubMenu } from '../../../main/components/sub-header/interfaces/subMenu.iterface';
 import { generalConfiguration } from '../../interfaces/generalConfiguration.interface';
 import { response } from '../../interfaces/response.interface';
@@ -10,6 +12,8 @@ import { FishFarmService } from '../../services/fish-farm.service';
   styleUrls: ['./general-configuration.component.scss']
 })
 export class GeneralConfigurationComponent implements OnInit {
+
+    isCheckButClicked: boolean;
 
     public alertUpdateGeneralConfiguration: boolean = false;
     private _generalConfiguration: generalConfiguration = {
@@ -27,10 +31,11 @@ export class GeneralConfigurationComponent implements OnInit {
         }
     ]
 
-    public constructor(private fishFarmService: FishFarmService){}
+    public constructor(private fishFarmService: FishFarmService){this.isCheckButClicked=false;}
 
     ngOnInit(): void {
         this.findGeneralConfiguration();
+        this.isCheckButClicked = false
     }
 
     public get generalConfiguration(): generalConfiguration {
@@ -62,4 +67,15 @@ export class GeneralConfigurationComponent implements OnInit {
     public confirmationContinue(confirmation: boolean): void {
         this.alertUpdateGeneralConfiguration = confirmation
     }
+
+    public async senBut(frm : NgForm){
+       this.isCheckButClicked=true
+       console.log(this.isCheckButClicked)
+       
+    }
+    public async senNoBut(frm : NgForm){
+        this.isCheckButClicked=false
+        console.log(this.isCheckButClicked)
+     }
+
 }

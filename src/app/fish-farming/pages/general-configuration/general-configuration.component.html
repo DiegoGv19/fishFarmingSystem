@@ -7,12 +7,18 @@
                     <p>Abrir compuertas de manera</p>
                     <div class="generalConfigurationCheckInput">
                         <div class="form-check">
-                            <input class="form-check-input" value="automatic" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates">
-                            <label class="form-check-label">Automática</label>
+                            <form #validgate="ngForm">
+                                <input class="form-check-input" value="automatic" type="radio" name="WayToOpenGates"
+                                    [(ngModel)]="generalConfiguration.WayToOpenGates" (click)="senBut(validgate)">
+                                <label class="form-check-label">Automática</label>
+                            </form>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" value="manual" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates">
-                            <label class="form-check-label">Manual</label>
+                            <form #block="ngForm">
+                                <input class="form-check-input" value="manual" type="radio" name="WayToOpenGates"
+                                    [(ngModel)]="generalConfiguration.WayToOpenGates" (click)="senNoBut(block)">
+                                <label class="form-check-label">Manual</label>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -20,9 +26,11 @@
                 <div>
                     <div class="mb-3">
                         <label for="TimeToOpenGates" class="form-label">Tiempo en que iniciarán a abrirse</label>
-                        <div class="generalConfigurationFormTime">
-                            <input type="text" name="TimeToOpenGates" [(ngModel)]="generalConfiguration.TimeToOpenGates" class="form-control">
-                            <p>minuto(s)</p>
+                        <div class="generalConfigurationFormTime">         
+                                <input type="text" formControlName="time" [disabled]="!isCheckButClicked"
+                                    name="TimeToOpenGates" class="form-control">
+                                <p>minuto(s)</p>
+
                         </div>
                     </div>
                     <div class="generalConfigurationHelp">
@@ -30,7 +38,8 @@
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="generalConfigurationFormButoon btn btn-primary">Guardar cambios</button>
+                <button [disabled]="!block.valid" type="submit"
+                    class="generalConfigurationFormButoon btn btn-primary">Guardar cambios</button>
             </form>
         </div>
     </div>

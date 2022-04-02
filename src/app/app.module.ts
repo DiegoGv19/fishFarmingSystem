@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }     from './app.component';
 
 import { UserModule }       from './user/user.module';
-
+import { ToastrModule } from 'ngx-toastr';
+import { reduce } from 'rxjs';
 @NgModule({
     declarations: [
         AppComponent,
@@ -16,6 +17,11 @@ import { UserModule }       from './user/user.module';
         BrowserModule,
         HttpClientModule,
         UserModule,
+        ToastrModule.forRoot( {
+            
+            closeButton: true,
+            progressBar: true,
+            timeOut: 8000,})
     ],
     providers: [],
     bootstrap: [

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule,FormGroup } from '@angular/forms';
 import { NgModule }     from '@angular/core';
 
 import { EmailForPasswordChangeSentComponent } from './pages/email-for-password-change-sent/email-for-password-change-sent.component';
@@ -37,7 +37,9 @@ import { UserRoutingModule } from './user-routing.module';
     imports: [
         UserRoutingModule,
         CommonModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule,
+        
     ]
 })
 

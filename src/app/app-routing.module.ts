@@ -7,8 +7,8 @@ const routes: Routes = [
     {
         path: 'fish-farm',
         loadChildren: () => import('./fish-farming/fish-farming.module').then( m => m.FishFarmingModule ),
-        canLoad: [ AuthGuard ],
-        canActivate: [ AuthGuard ]
+        //canLoad: [ AuthGuard ],
+        //canActivate: [ AuthGuard ]
     },
     {
         path: 'admin',
