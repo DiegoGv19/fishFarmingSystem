@@ -19,6 +19,7 @@ export class FishFarmService {
     private _url_find_fish_farms: string = 'FishFarms';
     private _url_find_fish_farms_configuration: string = 'FishFarms/Config';
     private _url_view_fish_farm : string = 'FishFarms';
+    private _url_view_iot : string ='iot'
 
     private _fishFarm: fishFarm = {
         Name            : '',
@@ -28,6 +29,14 @@ export class FishFarmService {
         Devices         : [],
         Code            : ''
     };
+
+    private _device : Device = {
+        Name    : '',
+        Type    : '',
+        UrlImage: '',
+        Id : '',
+        Code : ''
+    }
     private _generalConfiguration: generalConfiguration = {
         WayToOpenGates : '',
         TimeToOpenGates: 0,
@@ -38,7 +47,7 @@ export class FishFarmService {
     private _listDo : Array<Device> = [];
     private _listTemperature: Array<Device> = [];
     private _listPh : Array<Device> = [];
-    
+    private _iotId: string = '';
     constructor(private http: HttpClient, private authService: AuthService, private apiService: ApiService) { }
 
     public get fishFarm(): fishFarm {
@@ -48,9 +57,22 @@ export class FishFarmService {
     public setFishFarm(fishFarm: fishFarm) {
         this._fishFarm = fishFarm;
     }
+    public setIot(device: Device) {
+        this._device = device;
+    }
+    public getIot() {
+        return this._device;
+    }
 
     public get fishFarmId(): string {
         return this._fishFarmId;
+    }
+
+    public get getIotId(): string {
+        return this._iotId;
+    }
+    public setIotId(iotId: string):void {
+        this._iotId = iotId;
     }
 
     public setFishFarmId(fishFarmId: string): void {
@@ -110,6 +132,15 @@ export class FishFarmService {
             Code            : ''
         };
     }
+    public resetIot(){
+        this._device= {
+            Name :'',
+            UrlImage : '',
+            Type : '',
+            Id : '',
+            Code : '',
+        }
+    }
 
     public setDevice() {
         this._listTemperature = [];
@@ -134,5 +165,8 @@ export class FishFarmService {
 
     public viewFishFarm(): Observable<fishFarm> {
         return this.http.get<fishFarm>(`${this.apiService.urlApi}/${this._url_view_fish_farm}/${this._fishFarmId}`, { headers: this.authService.httpOptions });
+    }
+    public viewIot(): Observable<Device> {
+        return this.http.get<Device>(`${this.apiService.urlApi}/${this._url_view_fish_farm}/${this._url_view_iot}/${this._iotId}`, { headers: this.authService.httpOptions });
     }
 }

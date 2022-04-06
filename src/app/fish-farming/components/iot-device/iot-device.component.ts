@@ -11,9 +11,15 @@ export class IotDeviceComponent {
     @Input() iotDevice: Device = {
         Name    : '',
         Type    : '',
-        UrlImage: ''
+        UrlImage: '',
+        Id: '',
+        Code: ''
     }
 
     public constructor() {}
     
+    showdata(){
+      console.log(this.iotDevice.Name);
+      console.log(this.iotDevice.Type);
+    }
 }

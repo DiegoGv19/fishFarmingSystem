@@ -34,6 +34,7 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
             this.fishFarmService.viewFishFarm().subscribe(
                 (fishFarm: fishFarm) => {
                     this.fishFarmService.setFishFarm(fishFarm);
+                    console.log('rata')
                     if( fishFarm.Code != '200') {
                         this.router.navigate(['fish-farm']);
                     }

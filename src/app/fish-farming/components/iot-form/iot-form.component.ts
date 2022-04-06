@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Device } from '../../interfaces/device.interface';
 
 @Component({
   selector: 'app-iot-form',
   templateUrl: './iot-form.component.html',
   styleUrls: ['./iot-form.component.scss']
 })
-export class IotFormComponent implements OnInit {
+export class IotFormComponent  {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  @Input() iotDevice: Device = {
+    Name    : '',
+    Type    : '',
+    UrlImage: '',
+    Id: '',
+    Code: ''
   }
 
+  constructor() { }
+  showdata(){
+    console.log(this.iotDevice.Name);
+    console.log(this.iotDevice.Type);
+  }
+  
 }
