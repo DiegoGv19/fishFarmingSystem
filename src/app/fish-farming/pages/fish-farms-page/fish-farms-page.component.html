@@ -1,9 +1,9 @@
 <div class="bodyContainer">
     <app-main-header></app-main-header>
     <main class="mainFishFarmContainer ">
-        <div class="listFishFarms">
+        <div class="listFishFarms" [@expand]>
             <app-sub-header [subMenus]='subMenus' [hideContainer]='hideContainer'></app-sub-header>
-            <app-list-fish-farms [listFishFarmAbbreviated]="listFishFarmAbbreviated"></app-list-fish-farms>
+            <app-list-fish-farms [listFishFarmAbbreviated]="listFishFarmAbbreviated" class="list-farms"></app-list-fish-farms>
         </div>
         <div class="fishFarmInformation">
             <div>

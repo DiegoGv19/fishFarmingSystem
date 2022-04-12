@@ -6,11 +6,12 @@ import { FishFarmService } from '../../services/fish-farm.service';
 import { AuthService } from 'src/app/user/services/auth.service';
 import { fishFarmAbbreviated } from '../../interfaces/fishFarmAbbreviated.interface';
 import { fishFarms } from '../../interfaces/fishFarms.interface';
-
+import { expand } from 'src/app/animations/app.animation';
 @Component({
   selector: 'app-fish-farms-page',
   templateUrl: './fish-farms-page.component.html',
-  styleUrls: ['./fish-farms-page.component.scss']
+  styleUrls: ['./fish-farms-page.component.scss'],
+  animations: [expand()]
 })
 export class FishFarmsPageComponent implements OnInit {
     public listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];

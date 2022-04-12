@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { expand } from 'src/app/animations/app.animation';
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
 
 @Component({
   selector: 'app-add-fish-farm',
   templateUrl: './add-fish-farm.component.html',
-  styleUrls: ['./add-fish-farm.component.scss']
+  styleUrls: ['./add-fish-farm.component.scss'],
+  animations: [expand()],
 })
 export class AddFishFarmComponent {
     subMenus: Array<SubMenu> = [

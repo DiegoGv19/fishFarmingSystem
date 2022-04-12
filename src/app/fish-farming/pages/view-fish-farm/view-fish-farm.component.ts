@@ -6,11 +6,13 @@ import { FishFarmService } from '../../services/fish-farm.service';
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
 import { fishFarm } from '../../interfaces/fishFarm.interface';
 import { Device } from '../../interfaces/device.interface';
+import { expand } from 'src/app/animations/app.animation';
 
 @Component({
   selector: 'app-view-fish-farm',
   templateUrl: './view-fish-farm.component.html',
-  styleUrls: ['./view-fish-farm.component.scss']
+  styleUrls: ['./view-fish-farm.component.scss'],
+  animations: [expand()],
 })
 export class ViewFishFarmComponent implements OnInit, OnDestroy {
     private sub    : any;

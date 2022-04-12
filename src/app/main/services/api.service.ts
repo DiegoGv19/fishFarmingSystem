@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-    private _urlApi: string = 'https://192.168.0.109:44366';
+    private _urlApi: string = 'https://localhost:7082';
 
     constructor() { }
 

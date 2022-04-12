@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
+import { expand } from 'src/app/animations/app.animation';
+
 
 @Component({
   selector: 'app-edit-iot',
   templateUrl: './edit-iot.component.html',
-  styleUrls: ['./edit-iot.component.scss']
+  styleUrls: ['./edit-iot.component.scss'],
+  animations: [expand()],
 })
 export class EditIotComponent {
     public subMenus: Array<SubMenu> = [
