@@ -2,7 +2,7 @@ import { SafeHtml } from "@angular/platform-browser";
 
 export interface SubMenu {
     name: string;
-    url: string;
+    url: Array<any>;
     image: SafeHtml;
     template: string;
 }

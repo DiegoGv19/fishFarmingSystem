@@ -62,10 +62,6 @@ $width-long: 1200px;
     display: flex;
 }
 
-.generalConfigurationHelp {
-    font-size: 12px;
-}
-
 .generalConfigurationFormTime {
     display: flex;
     align-items: center;
@@ -88,4 +84,17 @@ $width-long: 1200px;
         transform: translateX(-50%);
         width: 100%;
     }
+}
+
+.mb-3 {
+    margin: 0 !important;
+}
+
+.generalConfigurationHelp {
+    font-size: 12px;
+}
+
+.errorTime{
+    color: #dc3545;
+    font-size: 12px;
 }

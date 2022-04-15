@@ -7,11 +7,11 @@
                     <p>Abrir compuertas de manera</p>
                     <div class="generalConfigurationCheckInput">
                         <div class="form-check">
-                            <input class="form-check-input" value="automatic" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates">
+                            <input class="form-check-input" value="automatic" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates" (click)="chageCheckInput('automátic')">
                             <label class="form-check-label">Automática</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" value="manual" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates">
+                            <input class="form-check-input" value="manual" type="radio" name="WayToOpenGates" [(ngModel)]="generalConfiguration.WayToOpenGates" (click)="chageCheckInput('manual')">
                             <label class="form-check-label">Manual</label>
                         </div>
                     </div>
@@ -21,11 +21,11 @@
                     <div class="mb-3">
                         <label for="TimeToOpenGates" class="form-label">Tiempo en que iniciarán a abrirse</label>
                         <div class="generalConfigurationFormTime">
-                            <input type="text" name="TimeToOpenGates" [(ngModel)]="generalConfiguration.TimeToOpenGates" class="form-control">
+                            <input type="text" name="TimeToOpenGates" [(ngModel)]="generalConfiguration.TimeToOpenGates" class="form-control" [disabled]="disableInput">
                             <p>minuto(s)</p>
                         </div>
                     </div>
-                    <div class="generalConfigurationHelp">
+                    <div [ngClass]="errorTime ? 'errorTime' : 'generalConfigurationHelp'">
                         <p>El tiempo mínimo es 0 minutos y el máximo es 30 minutos</p>
                     </div>
                 </div>

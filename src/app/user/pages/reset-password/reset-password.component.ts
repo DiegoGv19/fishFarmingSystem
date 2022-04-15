@@ -9,7 +9,7 @@ import { HeaderData } from '../../components/header/interfaces/headerData.interf
 
 export class ResetPasswordComponent {
     headerData: HeaderData = {
-        image: 'https://1000marcas.net/wp-content/uploads/2020/02/Google-logo.jpg',
+        image: 'https://igoumicdn.com/uploads/portfolio/Fish-Farm-Logo.jpg',
         title: 'Restablecer contraseña',
         paragraph: 'Ingresa tu correo electrónico para enviarte un enlace con el que puedas restablecer tu contraseña'
     }

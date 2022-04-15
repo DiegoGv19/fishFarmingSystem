@@ -1,5 +1,9 @@
-export interface Device {
-    Name    :string;
-    Type    :string;
-    UrlImage: string;
+export interface device {
+    Name       :string;
+    TypeDevice :string;
+    Description:string;
+    ImageUrl   :string;
+    DeviceCode :string;
+    IsConnected:any;
+    Code       :string;
 }

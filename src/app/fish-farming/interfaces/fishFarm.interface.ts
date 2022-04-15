@@ -1,9 +1,9 @@
-import { Device } from './device.interface';
+import { deviceAbbreviated } from './deviceAbbreviated.interface';
 export interface fishFarm {
     Name            : string;
     LastTemperature : number;
     LastPh          : number;
     LastDo          : number;
-    Devices         : Array<Device>;
+    Devices         : Array<deviceAbbreviated>;
     Code            : string;
 }

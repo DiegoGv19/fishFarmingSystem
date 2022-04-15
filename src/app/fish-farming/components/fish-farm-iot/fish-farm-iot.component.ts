@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { Device } from '../../interfaces/device.interface';
 import { FishFarmService } from '../../services/fish-farm.service';
 
 @Component({

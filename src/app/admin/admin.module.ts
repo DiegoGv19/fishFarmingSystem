@@ -15,8 +15,8 @@ import { RegisterAccountComponent } from './pages/register-account/register-acco
     exports: [],
     imports: [
         AdminRoutingModule,
-      CommonModule,
-      FormsModule
+        CommonModule,
+        FormsModule
     ]
 })
 

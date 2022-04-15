@@ -6,10 +6,15 @@ import { ApiService } from 'src/app/main/services/api.service';
 import { AuthService } from 'src/app/user/services/auth.service';
 
 import { fishFarm } from '../interfaces/fishFarm.interface';
-import { Device } from '../interfaces/device.interface';
 import { generalConfiguration } from '../interfaces/generalConfiguration.interface';
 import { fishFarms } from '../interfaces/fishFarms.interface';
 import { response } from '../interfaces/response.interface';
+import { deviceAbbreviated } from '../interfaces/deviceAbbreviated.interface';
+import { device } from '../interfaces/device.interface';
+import { typeFishes } from '../interfaces/typeFishes.interface';
+import { fishFarmCreateResponse } from '../interfaces/fishFarmCreateResponse.interface';
+import { fishFarmCreate } from '../interfaces/fishFarmCreate.interface';
+import { fishFarmAbbreviated } from '../interfaces/fishFarmAbbreviated.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +24,9 @@ export class FishFarmService {
     private _url_find_fish_farms: string = 'FishFarms';
     private _url_find_fish_farms_configuration: string = 'FishFarms/Config';
     private _url_view_fish_farm : string = 'FishFarms';
-
+    private _url_view_device: string = 'FishFarms/Devices';
+    private _url_view_type_fishes: string = 'Organization/TypeFishes';
+    private _url_fish_farms_create: string = 'FishFarms';
     private _fishFarm: fishFarm = {
         Name            : '',
         LastTemperature : 0,
@@ -34,12 +41,13 @@ export class FishFarmService {
         Code           : '',
     }
     private _fishFarmId : string = '';
-    private _listCompuertas : Array<Device> = [];
-    private _listDo : Array<Device> = [];
-    private _listTemperature: Array<Device> = [];
-    private _listPh : Array<Device> = [];
+    private _deviceId   : string = '';
+    private _listCompuertas : Array<deviceAbbreviated> = [];
+    private _listDo : Array<deviceAbbreviated> = [];
+    private _listTemperature: Array<deviceAbbreviated> = [];
+    private _listPh : Array<deviceAbbreviated> = [];
     
-    constructor(private http: HttpClient, private authService: AuthService, private apiService: ApiService) { }
+    constructor(private http: HttpClient, private authService: AuthService, private apiService: ApiService) {}
 
     public get fishFarm(): fishFarm {
         return this._fishFarm;
@@ -57,6 +65,14 @@ export class FishFarmService {
         this._fishFarmId = fishFarmId;
     }
 
+    public get deviceId(): string {
+        return this._deviceId;
+    }
+
+    public setDeviceId(deviceId: string): void {
+        this._deviceId = deviceId;
+    }
+
     public get generalConfiguration(): generalConfiguration {
         return this._generalConfiguration;
     }
@@ -65,19 +81,19 @@ export class FishFarmService {
         this._generalConfiguration = generalConfiguration;
     }
 
-    public get listTemperature(): Array<Device> {
+    public get listTemperature(): Array<deviceAbbreviated> {
         return this._listTemperature;
     }
 
-    public get listPh(): Array<Device> {
+    public get listPh(): Array<deviceAbbreviated> {
         return this._listPh;
     }
 
-    public get listDo(): Array<Device> {
+    public get listDo(): Array<deviceAbbreviated> {
         return this._listDo;
     }
     
-    public get listCompuertas(): Array<Device> {
+    public get listCompuertas(): Array<deviceAbbreviated> {
         return this._listCompuertas;
     }
 
@@ -134,5 +150,17 @@ export class FishFarmService {
 
     public viewFishFarm(): Observable<fishFarm> {
         return this.http.get<fishFarm>(`${this.apiService.urlApi}/${this._url_view_fish_farm}/${this._fishFarmId}`, { headers: this.authService.httpOptions });
+    }
+
+    public viewDevice(): Observable<device> {
+        return this.http.get<device>(`${this.apiService.urlApi}/${this._url_view_device}/${this._deviceId}`, { headers: this.authService.httpOptions });
+    }
+
+    public findTypeFishes(): Observable<typeFishes> {
+        return this.http.get<typeFishes>(`${this.apiService.urlApi}/${this._url_view_type_fishes}`, { headers: this.authService.httpOptions });
+    }
+
+    public createFishFarm(fishFarmCreate: fishFarmCreate): Observable<fishFarmCreateResponse> {
+        return this.http.post<fishFarmCreateResponse>(`${this.apiService.urlApi}/${this._url_fish_farms_create}`, fishFarmCreate, { headers: this.authService.httpOptions });
     }
 }

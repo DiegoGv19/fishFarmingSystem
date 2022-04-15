@@ -21,8 +21,8 @@ export class SubHeaderComponent {
         }
     }
 
-    public onChangeHideContainer(url: string): void {
+    public onChangeHideContainer(url: Array<any>): void {
         this.hideContainer = !this.hideContainer;
-        this.router.navigate([url]);
+        this.router.navigate(url);
     }
 }

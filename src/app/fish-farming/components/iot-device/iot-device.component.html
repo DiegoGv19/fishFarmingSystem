@@ -1,9 +1,6 @@
-<div class="fishFarmIoTSensor sensorActive">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZRqb-7qRdJd04vSy2b83RroyKTaaM3VdfMdIOjIdJ66HgYEuucN0Y9y28rjvAXJkalD8&usqp=CAU" alt="">
-    <p>{{ iotDevice.Name }}</p>
-</div>
-
-<div class="fishFarmIoTSensor sensorNoActive" *ngIf="false">
-    <img [src]="iotDevice.UrlImage" alt="">
-    <p>{{ iotDevice.Name }}</p>
-</div>
+<a [routerLink]="['./iot', iotDevice!.Id]" class="fishFarmIoTLink">
+    <div class="fishFarmIoTSensor" [ngClass]="connected ? 'sensorActive' : 'sensorNoActive'">
+        <img [src]="image" alt="iot">
+        <p>{{ iotDevice.Name }}</p>
+    </div>
+</a>

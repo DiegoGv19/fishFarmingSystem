@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { device } from '../../interfaces/device.interface';
 
 @Component({
   selector: 'app-iot-form',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./iot-form.component.scss']
 })
 export class IotFormComponent implements OnInit {
+    public connected = false
+    @Input() device: device = {
+        Name       :'',
+        TypeDevice :'',
+        ImageUrl   :'',
+        Description:'',
+        DeviceCode :'',
+        IsConnected:'',
+        Code       : ''
+    }
+    constructor() { 
+        this.connected = this.device.IsConnected == true ? true : false
+    }
 
-  constructor() { }
+    ngOnInit(): void {
+    }
 
-  ngOnInit(): void {
-  }
+    public editDevice() {
 
+    }
 }
