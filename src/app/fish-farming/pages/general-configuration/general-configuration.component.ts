@@ -34,13 +34,6 @@ export class GeneralConfigurationComponent implements OnInit {
 
     ngOnInit(): void {
         this.findGeneralConfiguration();
-        if(this._generalConfiguration.WayToOpenGates == '' ) {
-            this.disableInput = true;
-            this._generalConfiguration.WayToOpenGates = 'Manual';
-        }
-        if(this._generalConfiguration.WayToOpenGates == 'Manual') {
-            this.disableInput = true;
-        }
     }
 
     public get generalConfiguration(): generalConfiguration {
@@ -53,6 +46,9 @@ export class GeneralConfigurationComponent implements OnInit {
                 if(generalConfiguration.Code == '200') {
                     this._generalConfiguration = generalConfiguration;
                     this.fishFarmService.setGeneralConfiguration(generalConfiguration);
+                    if(this._generalConfiguration.WayToOpenGates == 'manual') {
+                        this.disableInput = true;
+                    }
                 }
             }
         )
@@ -69,7 +65,7 @@ export class GeneralConfigurationComponent implements OnInit {
     }
     
     public validateData():boolean {
-        if((this._generalConfiguration.WayToOpenGates == 'automatic' && this._generalConfiguration.TimeToOpenGates >= 0 && this._generalConfiguration.TimeToOpenGates <= 30) || this._generalConfiguration.WayToOpenGates == 'manual' && this._generalConfiguration.TimeToOpenGates == 0) {
+        if((this._generalConfiguration.WayToOpenGates == 'automatic' && typeof(this._generalConfiguration.TimeToOpenGates) == 'number' && this._generalConfiguration.TimeToOpenGates >= 0 && this._generalConfiguration.TimeToOpenGates <= 30) || this._generalConfiguration.WayToOpenGates == 'manual' && this._generalConfiguration.TimeToOpenGates == 0) {
             this.errorTime = false;
             return true;
         }

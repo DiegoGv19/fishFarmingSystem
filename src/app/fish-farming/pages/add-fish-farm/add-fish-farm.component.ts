@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { typeFish } from '../../interfaces/typeFish.interface';
 import { typeFishes } from '../../interfaces/typeFishes.interface';
 import { fishFarmCreate } from '../../interfaces/fishFarmCreate.interface';
-import { toUnicode } from 'punycode';
 import { fishFarmCreateResponse } from '../../interfaces/fishFarmCreateResponse.interface';
 
 @Component({
@@ -14,6 +13,7 @@ import { fishFarmCreateResponse } from '../../interfaces/fishFarmCreateResponse.
   styleUrls: ['./add-fish-farm.component.scss']
 })
 export class AddFishFarmComponent {
+    public alertAddFishFarm: boolean = false;
     public saveWithoutConfiguration: boolean = false;
     public errorName: boolean = false;
     private _typeFishes: Array<typeFish> = [];
@@ -65,22 +65,27 @@ export class AddFishFarmComponent {
     public createFishFarm() {
         if(this._fishFarm.Name != '') {
             this.errorName = false;
-            this.fishFarmService.createFishFarm(this._fishFarm).subscribe(
-                (fishFarmCreateResponse: fishFarmCreateResponse) => {
-                    if(fishFarmCreateResponse.Code == '200') {
-                        if(!this.saveWithoutConfiguration) {
-                            this.fishFarmService.setFishFarmId(fishFarmCreateResponse.Id);
-                            this.redirectTo('fish-farm/add-fish-farm/set-up-iot');
-                        }
-                        else {
-                            this.redirectTo('fish-farm');
-                        }
-                    }
-                }
-            )
+            this.alertAddFishFarm = true
         }
         else {
             this.errorName = true;
         }
+    }
+
+    public confirmationContinue(confirmation: boolean): void {
+        this.alertAddFishFarm = confirmation;
+        this.fishFarmService.createFishFarm(this._fishFarm).subscribe(
+            (fishFarmCreateResponse: fishFarmCreateResponse) => {
+                if(fishFarmCreateResponse.Code == '200') {
+                    if(!this.saveWithoutConfiguration) {
+                        this.fishFarmService.setFishFarmId(fishFarmCreateResponse.Id);
+                        this.redirectTo('fish-farm/add-fish-farm/set-up-iot');
+                    }
+                    else {
+                        this.redirectTo('fish-farm');
+                    }
+                }
+            }
+        )
     }
 }

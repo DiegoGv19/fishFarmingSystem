@@ -33,3 +33,6 @@
         <router-outlet></router-outlet>
     </div>
 </div>
+<div *ngIf="alertAddFishFarm" class="confirmationContainer">
+    <app-confirmation-message (continueEvent)="confirmationContinue( $event )"></app-confirmation-message>
+</div>

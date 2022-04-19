@@ -79,3 +79,16 @@ $width-long: 1200px;
 .hidenErrorMasssage {
     display: none;
 }
+
+.confirmationContainer {
+    &::after {
+        content: '';
+        background: white;
+        height: calc(100vh - 64px);
+        opacity: 0.2;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+}

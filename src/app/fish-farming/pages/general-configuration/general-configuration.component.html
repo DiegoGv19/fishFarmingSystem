@@ -21,7 +21,7 @@
                     <div class="mb-3">
                         <label for="TimeToOpenGates" class="form-label">Tiempo en que iniciarán a abrirse</label>
                         <div class="generalConfigurationFormTime">
-                            <input type="text" name="TimeToOpenGates" [(ngModel)]="generalConfiguration.TimeToOpenGates" class="form-control" [disabled]="disableInput">
+                            <input type="number" name="TimeToOpenGates" [(ngModel)]="generalConfiguration.TimeToOpenGates" class="form-control" [disabled]="disableInput">
                             <p>minuto(s)</p>
                         </div>
                     </div>
