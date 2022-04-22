@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-delete-fish-farm',
-  templateUrl: './delete-fish-farm.component.html',
-  styleUrls: ['./delete-fish-farm.component.scss']
+  selector: 'app-confirmation-delete-message',
+  templateUrl: './confirmation-delete-message.component.html',
+  styleUrls: ['./confirmation-delete-message.component.scss']
 })
-export class DeleteFishFarmComponent {
+export class ConfirmationDeleteMessageComponent {
+
     @Output() continueEvent: EventEmitter<boolean> = new EventEmitter();
 
     public confirmationContinue(confirmation: boolean) {

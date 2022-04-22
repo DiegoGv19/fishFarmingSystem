@@ -7,5 +7,5 @@ import { fishFarmAbbreviated } from '../../interfaces/fishFarmAbbreviated.interf
   styleUrls: ['./list-fish-farms.component.scss']
 })
 export class ListFishFarmsComponent {
-  @Input() listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];
+    @Input() listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];
 }

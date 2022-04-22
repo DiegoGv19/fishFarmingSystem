@@ -3,9 +3,9 @@
         <app-sub-header [subMenus]='subMenus'></app-sub-header>
         <div class="viewFishFarmInformaction">
             <div class="fishFarmTitle">
-                <p>Piscigranja de reproductores</p>
+                <p>{{fishFarmName}}</p>
             </div>
-            <app-fish-farm-menu></app-fish-farm-menu>
+            <app-fish-farm-menu (deleteEvent)="deleteFishFarm( $event )"></app-fish-farm-menu>
             <app-fish-farm-information></app-fish-farm-information>
             <app-fish-farm-iot></app-fish-farm-iot>
         </div>
@@ -14,4 +14,9 @@
         <router-outlet></router-outlet>
     </div>
 </div>
-<app-delete-fish-farm></app-delete-fish-farm>
+<div *ngIf="deleteFishFamr" class="confirmationContainer">
+    <app-delete-fish-farm (continueEvent)="confirmationContinue( $event )"></app-delete-fish-farm>
+</div>
+<div *ngIf="deleteSuccessful" class="confirmationContainer">
+    <app-confirmation-delete-message (continueEvent)="confirmationDelete( $event )"></app-confirmation-delete-message>
+</div>

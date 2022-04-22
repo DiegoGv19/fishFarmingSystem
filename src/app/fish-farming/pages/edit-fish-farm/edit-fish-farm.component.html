@@ -1,0 +1,38 @@
+<div class="editFishFarmGrid">
+    <div class="editFishFarmContainerGrid">
+        <app-sub-header [subMenus]='subMenus'></app-sub-header>
+        <div class="editFishFarmContainer">
+            <form class="editFishFarmForm" (ngSubmit)="createFishFarm()">
+                <h2>Datos de la piscigranja</h2>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nombre de piscigranja</label>
+                    <input type="text" class="form-control" name="Name" [(ngModel)]="fishFarm.Name">
+                    <div [ngClass]="errorName ? 'errorMasssage' : 'hidenErrorMasssage'">
+                        <p>Debe ingresar el nombre de la piscigranja.</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Descripción (opcional)</label>
+                    <textarea class="form-control" name="Description" [(ngModel)]="fishFarm.Description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Tipo de pez (opcional)</label>
+                    <select class="form-select" aria-label="Default select example" name="FishTypeId" [(ngModel)]="fishFarm.FishTypeId">
+                        <option selected value="0">Pez</option>
+                        <option *ngFor="let typeFish of typeFishes" value="typeFish.Id">{{typeFish.Name}}</option>
+                    </select>
+                </div>
+                <div class="editFishFarmFormContainerButton">
+                    <button type="submit" class="editFishFarmFormButton btn btn-outline-info" (click)="changeSaveWithoutConfiguration(true)">Guardar sin configuración</button>
+                    <button type="submit" class="editFishFarmFormButton btn btn-primary" (click)="changeSaveWithoutConfiguration(false)">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div *ngIf="alertAddFishFarm" class="confirmationContainer">
+    <app-confirmation-message (continueEvent)="confirmationContinue( $event )"></app-confirmation-message>
+</div>

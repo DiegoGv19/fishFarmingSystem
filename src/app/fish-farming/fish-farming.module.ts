@@ -33,6 +33,7 @@ import { MainModule } from '../main/main.module';
 import { FormsModule } from '@angular/forms';
 import { IotRangeComponent } from './components/iot-range/iot-range.component';
 import { IotAddComponent } from './components/iot-add/iot-add.component';
+import { EditFishFarmComponent } from './pages/edit-fish-farm/edit-fish-farm.component';
 
 @NgModule({
     declarations: [
@@ -62,6 +63,7 @@ import { IotAddComponent } from './components/iot-add/iot-add.component';
         ViewFishFarmComponent,
         ViewShoddyComponent,
         IotRangeComponent,
+        EditFishFarmComponent,
     ],
     exports: [],
     imports: [

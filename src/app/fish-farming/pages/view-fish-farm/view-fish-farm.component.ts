@@ -5,6 +5,7 @@ import { FishFarmService } from '../../services/fish-farm.service';
 
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
 import { fishFarm } from '../../interfaces/fishFarm.interface';
+import { response } from '../../interfaces/response.interface';
 
 @Component({
   selector: 'app-view-fish-farm',
@@ -13,6 +14,9 @@ import { fishFarm } from '../../interfaces/fishFarm.interface';
 })
 export class ViewFishFarmComponent implements OnInit, OnDestroy {
     private sub    : any;
+    public deleteFishFamr: boolean = false;
+    public deleteSuccessful: boolean = false;
+    public fishFarmName: string = '';
     public subMenus: Array<SubMenu> = [
         {
             name: 'Volver',
@@ -33,6 +37,7 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
             this.fishFarmService.viewFishFarm().subscribe(
                 (fishFarm: fishFarm) => {
                     this.fishFarmService.setFishFarm(fishFarm);
+                    this.fishFarmName = this.fishFarmService.fishFarm.Name;
                     if( fishFarm.Code != '200') {
                         this.router.navigate(['fish-farm']);
                     }
@@ -47,5 +52,35 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
     
     public ngOnDestroy() {
         this.sub.unsubscribe();
+    }
+
+    public redirectTo(uri:string){
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigate([uri]));
+    }
+
+    public deleteFishFarm($event: any) {
+        if($event == true) {
+            this.deleteFishFamr = $event;
+        }
+    }
+
+    public confirmationContinue($event: any) {
+        this.deleteFishFamr = $event;
+        if(this.deleteFishFamr == true) {
+            this.fishFarmService.deleteFishFarm().subscribe(
+                (response: response) => {
+                    if (response.Code == '200') {
+                        this.deleteFishFamr = false; 
+                        this.deleteSuccessful = true;
+                    }
+                }
+            )
+        }
+    }
+
+    public confirmationDelete($event: any) {
+        this.deleteSuccessful = $event;
+        this.redirectTo('fish-farm');
     }
 }

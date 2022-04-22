@@ -13,11 +13,14 @@
     text-align: center;
     transform: translate(-50%, -50%);
     top: 50%;
-
+    z-index: 100;
     &Buttons {
         display: flex;
         flex-direction: column;
         padding: 0 20px;
+        & button {
+            cursor: pointer;
+        }
     }
 
     &Name {

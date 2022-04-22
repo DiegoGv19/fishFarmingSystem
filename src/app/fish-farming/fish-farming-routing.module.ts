@@ -9,6 +9,7 @@ import { SetUpIotComponent } from './pages/set-up-iot/set-up-iot.component';
 import { ShoddyHistoryComponent } from './pages/shoddy-history/shoddy-history.component';
 import { ViewFishFarmComponent } from './pages/view-fish-farm/view-fish-farm.component';
 import { ViewShoddyComponent } from './pages/view-shoddy/view-shoddy.component';
+import { EditFishFarmComponent } from './pages/edit-fish-farm/edit-fish-farm.component';
 
 const routes: Routes = [
 {
@@ -50,6 +51,10 @@ const routes: Routes = [
             component: EditIotComponent,
         },
         ]
+    },
+    {
+        path: 'edit/:id',
+        component: EditFishFarmComponent
     },
     {
         path: 'general-configuration',

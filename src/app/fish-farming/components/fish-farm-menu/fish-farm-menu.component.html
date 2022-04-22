@@ -9,10 +9,10 @@
             <a class="fishFarmMenuLink" routerLink="shoddy-history" (click)="hideMenu()">Ver historial de mala calidad</a>
         </li>
         <li class="fishFarmMenuItem">
-            <a class="fishFarmMenuLink" href="#" (click)="hideMenu()">Editar</a>
+            <a class="fishFarmMenuLink" [routerLink]="['../../edit', fishFarmId]" (click)="hideMenu()">Editar</a>
         </li>
         <li class="fishFarmMenuItem">
-            <a class="fishFarmMenuLink" href="#" (click)="hideMenu()">Eliminar</a>
+            <p class="fishFarmMenuLink" (click)="deleteFishFarm( true )">Eliminar</p>
         </li>
     </ul>
 </nav>

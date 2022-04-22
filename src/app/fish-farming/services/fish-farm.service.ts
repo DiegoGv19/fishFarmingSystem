@@ -27,6 +27,9 @@ export class FishFarmService {
     private _url_view_device: string = 'FishFarms/Devices';
     private _url_view_type_fishes: string = 'Organization/TypeFishes';
     private _url_fish_farms_create: string = 'FishFarms';
+    private _url_fish_farms_delete: string = 'FishFarms';
+    private _url_fish_farms_edit: string = 'FishFarms';
+
     private _fishFarm: fishFarm = {
         Name            : '',
         LastTemperature : 0,
@@ -40,6 +43,7 @@ export class FishFarmService {
         TimeToOpenGates: 0,
         Code           : '',
     }
+    private _listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];
     private _fishFarmId : string = '';
     private _deviceId   : string = '';
     private _listCompuertas : Array<deviceAbbreviated> = [];
@@ -48,6 +52,14 @@ export class FishFarmService {
     private _listPh : Array<deviceAbbreviated> = [];
     
     constructor(private http: HttpClient, private authService: AuthService, private apiService: ApiService) {}
+
+    public get listFishFarmAbbreviated(): Array<fishFarmAbbreviated> {
+        return this._listFishFarmAbbreviated;
+    }
+
+    public setListFishFarmAbbreviated(listFishFarmAbbreviated: Array<fishFarmAbbreviated>) {
+        this._listFishFarmAbbreviated = listFishFarmAbbreviated;
+    }
 
     public get fishFarm(): fishFarm {
         return this._fishFarm;
@@ -162,5 +174,13 @@ export class FishFarmService {
 
     public createFishFarm(fishFarmCreate: fishFarmCreate): Observable<fishFarmCreateResponse> {
         return this.http.post<fishFarmCreateResponse>(`${this.apiService.urlApi}/${this._url_fish_farms_create}`, fishFarmCreate, { headers: this.authService.httpOptions });
+    }
+
+    public deleteFishFarm(): Observable<response> {
+        return this.http.delete<response>(`${this.apiService.urlApi}/${this._url_fish_farms_delete}/${this._fishFarmId}`, { headers: this.authService.httpOptions });
+    }
+
+    public editFishFarm(fishFarmCreate: fishFarmCreate): Observable<fishFarmCreateResponse> {
+        return this.http.put<fishFarmCreateResponse>(`${this.apiService.urlApi}/${this._url_fish_farms_edit}/${this._fishFarmId}`, fishFarmCreate, { headers: this.authService.httpOptions });
     }
 }

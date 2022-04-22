@@ -1,0 +1,94 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.editFishFarmContainer {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    height: 100%;
+    padding: 24px 16px 12px;
+    position: relative;
+
+    & h2 {
+        font-size: 18px;
+    }
+
+    &:after {
+        background: white;
+        content: 'Nueva piscigranja';
+        left: 16px;
+        padding: 4px 8px;
+        position: absolute;
+        text-align: center;
+        font-size: 16px;
+        top: -16px;
+    }
+}
+
+.editFishFarmContainerGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+    height: 100%;
+}
+
+.editFishFarmGrid {
+    grid-template-columns: 1fr;
+    height: 100%;
+    
+    @media only screen and (min-width: $width-long) {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+.editFishFarmForm {
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    &Button {
+        width: 100%;
+    }
+
+    &ContainerButton {
+        bottom: 0;
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        width: 100%;
+    }
+}
+
+.btn-outline-info {
+    &:hover {
+        color: white;
+    }
+}
+
+.btn-primary {
+    margin-top: 8px;
+}
+
+.errorMasssage {
+    color: #dc3545;
+    font-size: 12px;
+}
+
+.hidenErrorMasssage {
+    display: none;
+}
+
+.confirmationContainer {
+    &::after {
+        content: '';
+        background: white;
+        height: calc(100vh - 64px);
+        opacity: 0.2;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+}

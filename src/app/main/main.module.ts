@@ -6,11 +6,13 @@ import { MainHeaderComponent }          from './components/main-header/main-head
 import { MainNavBarComponent }          from './components/main-nav-bar/main-nav-bar.component';
 import { SubHeaderComponent }           from './components/sub-header/sub-header.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { ConfirmationDeleteMessageComponent } from './components/confirmation-delete-message/confirmation-delete-message.component';
 
 
 @NgModule({
     declarations: [
         ConfirmationMessageComponent,
+        ConfirmationDeleteMessageComponent,
         MainHeaderComponent,
         MainNavBarComponent,
         SubHeaderComponent,
@@ -18,6 +20,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
     ],
     exports: [
         ConfirmationMessageComponent,
+        ConfirmationDeleteMessageComponent,
         MainHeaderComponent,
         SubHeaderComponent
     ],
