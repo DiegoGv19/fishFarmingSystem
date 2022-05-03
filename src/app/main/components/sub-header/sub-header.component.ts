@@ -11,9 +11,8 @@ import { SubMenu } from './interfaces/subMenu.iterface';
 export class SubHeaderComponent {
 
     @Input() subMenus: Array<SubMenu> = [];
-    @Input() hideContainer: boolean = true;
 
-    constructor(private sanitizer: DomSanitizer, private router: Router ) {}
+    constructor(private sanitizer: DomSanitizer, private router: Router) {}
 
     public ngOnInit(): void {
         for (let subMenu of this.subMenus) {
@@ -22,7 +21,6 @@ export class SubHeaderComponent {
     }
 
     public onChangeHideContainer(url: Array<any>): void {
-        this.hideContainer = !this.hideContainer;
         this.router.navigate(url);
     }
 }

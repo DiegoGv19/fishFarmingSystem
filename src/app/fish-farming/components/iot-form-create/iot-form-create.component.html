@@ -1,0 +1,45 @@
+<div>
+    <h2 class="iotFormTitle">Datos del dispositivo</h2>
+</div>
+<form (ngSubmit)="deviceCreate()" class="iotForm">
+    <div class="form-group">
+        <label for="">Nombre</label>
+        <input type="text" class="form-control" name="Name" [(ngModel)]="device.Name">
+        <div [ngClass]="errorName ? 'errorMasssage' : 'hidenErrorMasssage'">
+            <p>Debe ingresar el nombre para el dispositivo IoT.</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Descripción (opcional)</label>
+        <textarea class="form-control" rows="3" name="Description" [(ngModel)]="device.Description"></textarea>
+    </div>
+    <div class="form-group">
+        <div class="iotFormImageTitle">
+            <label for="">Imágen (opcional)</label>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                </svg>
+            </div>
+        </div>
+        <img class="iotFormImage" src="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png" alt="">
+        <input type="file" class="form-control">
+        <small class="form-text text-muted">El tamaño de la imágen debe ser máximo de 2 MB y en formato svg, png o jpg.</small>
+    </div>
+    <h3 class="iotFormDataConetion">Datos de conexión</h3>
+    <div class="form-group">
+        <div class="iotFormCode">
+            <label for="">Código</label>
+            <div class="iotFormCodeInformation">
+                <p>Conectado</p>
+                <div [ngClass]="connected ? 'iotActive' : 'iotNoActive'"></div>
+            </div>
+        </div>
+        <input type="text" class="form-control" name="DeviceCode" [(ngModel)]="device.DeviceCode">
+        <div [ngClass]="errorCode ? 'errorMasssage' : 'hidenErrorMasssage'">
+            <p>Debe ingresar el codigo del dispositivo IoT.</p>
+        </div>
+    </div>
+    <button class="btn btn-primary saveConetion">Cambiar datos de conexión</button>
+    <button class="btn btn-primary saveChange">Guardar cambios</button>
+</form>

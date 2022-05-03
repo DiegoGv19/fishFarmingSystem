@@ -1,8 +1,10 @@
+import { ifStmt } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
 import { fishFarmCreate } from '../../interfaces/fishFarmCreate.interface';
 import { fishFarmCreateResponse } from '../../interfaces/fishFarmCreateResponse.interface';
+import { response } from '../../interfaces/response.interface';
 import { typeFish } from '../../interfaces/typeFish.interface';
 import { typeFishes } from '../../interfaces/typeFishes.interface';
 import { FishFarmService } from '../../services/fish-farm.service';
@@ -13,14 +15,17 @@ import { FishFarmService } from '../../services/fish-farm.service';
   styleUrls: ['./edit-fish-farm.component.scss']
 })
 export class EditFishFarmComponent implements OnInit {
+    private sub: any;
     public alertAddFishFarm: boolean = false;
     public saveWithoutConfiguration: boolean = false;
     public errorName: boolean = false;
+    public disableAll: boolean = false;
     private _typeFishes: Array<typeFish> = [];
     private _fishFarm: fishFarmCreate = {
         Name       : '',
         Description: '',
-        FishTypeId : ''
+        TypeFishId : '',
+        Code       : '',
     }
     subMenus: Array<SubMenu> = [
         {
@@ -39,11 +44,11 @@ export class EditFishFarmComponent implements OnInit {
        return this._fishFarm;
     }
 
-    public constructor(private fishFarmService: FishFarmService, private router: Router){}
+    public constructor(private fishFarmService: FishFarmService, private router: Router, private activateRoute: ActivatedRoute){}
 
     public ngOnInit() {
         this.findTypeFishes();
-        //agregar get de piscigranja
+        this.findFishFarm();
     }
 
     public changeSaveWithoutConfiguration(change:boolean) {
@@ -60,15 +65,24 @@ export class EditFishFarmComponent implements OnInit {
         )
     }
 
-    public redirectTo(uri:string){
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-        this.router.navigate([uri]));
+    public findFishFarm() {
+        this.sub = this.activateRoute.params.subscribe(params => {
+            this.fishFarmService.setFishFarmId(params['id']);
+            this.fishFarmService.viewFishFarmAbbreviated().subscribe(
+                (fishFarm: fishFarmCreate) => {
+                    if(fishFarm.Code == '200') {
+                        this._fishFarm = fishFarm;
+                    }
+                }
+            )
+        });
     }
 
-    public createFishFarm() {
+    public editFishFarm() {
         if(this._fishFarm.Name != '') {
             this.errorName = false;
             this.alertAddFishFarm = true
+            this._fishFarm.TypeFishId = this._fishFarm.TypeFishId != 'null' ? this._fishFarm.TypeFishId : null;
         }
         else {
             this.errorName = true;
@@ -78,14 +92,11 @@ export class EditFishFarmComponent implements OnInit {
     public confirmationContinue(confirmation: boolean): void {
         this.alertAddFishFarm = confirmation;
         this.fishFarmService.editFishFarm(this._fishFarm).subscribe(
-            (fishFarmCreateResponse: fishFarmCreateResponse) => {
+            (fishFarmCreateResponse: response) => {
                 if(fishFarmCreateResponse.Code == '200') {
                     if(!this.saveWithoutConfiguration) {
-                        this.fishFarmService.setFishFarmId(fishFarmCreateResponse.Id);
-                        this.router.navigate(['./fish-farm/add-fish-farm/set-up-iot']);
-                    }
-                    else {
-                        this.redirectTo('fish-farm');
+                        this.disableAll = true;
+                        this.router.navigate([`fish-farm/edit/${this.fishFarmService.fishFarmId}/set-up-iot`]);
                     }
                 }
             }

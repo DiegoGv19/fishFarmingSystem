@@ -8,8 +8,8 @@ import { deviceAbbreviated } from '../../interfaces/deviceAbbreviated.interface'
   styleUrls: ['./iot-device.component.scss']
 })
 export class IotDeviceComponent {
-    connected:Boolean = false
-    image:string = ''
+    public connected:Boolean = false
+    public image:string = ''
     @Input() iotDevice: deviceAbbreviated = {
         Id      : '',
         Name    : '',

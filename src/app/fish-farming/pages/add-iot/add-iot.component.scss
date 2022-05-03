@@ -24,6 +24,7 @@ $width-long: 1200px;
 .addIotInformaction {
     border: 1px solid #687782;
     border-radius: 8px;
+    height: 100%;
     padding: 24px 16px 12px;
     position: relative;
 }
@@ -41,3 +42,52 @@ $width-long: 1200px;
     }
 }
 
+.confirmationContainer {
+    &::after {
+        content: '';
+        background: white;
+        height: calc(100vh - 64px);
+        opacity: 0.2;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+}
+
+/*****************************/
+.subHeaderMenu {
+    display: flex;
+    list-style: none;
+    padding: 24px 0 8px;
+    margin: 0;
+}
+
+.subHeaderMenuLink {
+    color: #687782;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-left: 8px;
+    text-decoration: none;
+    font-size: 14px;
+
+    & div {
+        display: inline-block;
+    }
+
+    &:first-child {
+        margin-right: 20px;
+    }
+
+    & span {
+        display: none;
+        padding-left: 8px;
+    }
+
+    @media only screen and (min-width: $width-medium) {
+        & span {
+            display: block;
+        }
+    }
+}

@@ -7,12 +7,15 @@
                 <div class="editIotTitle">
                     <p>Sensor temperatura 1</p>
                 </div>
-                <app-iot-menu></app-iot-menu>
+                <app-iot-menu (deleteEvent)="deleteEvent(  $event )"></app-iot-menu>
                 <app-iot-form [device]="device"></app-iot-form>
             </div>
         </div>
     </div>
-    <div>
-        <app-delete-iot></app-delete-iot>
-    </div>
+</div>
+<div *ngIf="deleteIotQuestion" class="confirmationContainer">
+    <app-delete-iot (continueEvent)="questionDelete( $event )"></app-delete-iot>
+</div>
+<div *ngIf="deleteSuccessful" class="confirmationContainer">
+    <app-confirmation-delete-message (continueEvent)="confirmationDelete( $event )"></app-confirmation-delete-message>
 </div>

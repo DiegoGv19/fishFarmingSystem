@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { FishFarmService } from '../../services/fish-farm.service';
 
 @Component({
   selector: 'app-iot-menu',
@@ -6,9 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./iot-menu.component.scss']
 })
 export class IotMenuComponent {
-  public toggleIotMenuNav: boolean = true;
+    @Output() deleteEvent: EventEmitter<boolean> = new EventEmitter();
+    public toggleIotMenuNav: boolean = true;
+    public constructor(private fishFarmService: FishFarmService, private router: Router){}
 
-  public onChangeToggleNavBar(): void {
-      this.toggleIotMenuNav = !this.toggleIotMenuNav;
-  }
+    public onChangeToggleNavBar(): void {
+        this.toggleIotMenuNav = !this.toggleIotMenuNav;
+    }
+
+    public deleteIot(): void {
+        this.deleteEvent.emit(true);
+    }
 }

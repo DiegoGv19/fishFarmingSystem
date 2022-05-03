@@ -5,26 +5,26 @@
             <form class="addFishFarmForm" (ngSubmit)="createFishFarm()">
                 <h2>Datos de la piscigranja</h2>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nombre de piscigranja</label>
-                    <input type="text" class="form-control" name="Name" [(ngModel)]="fishFarm.Name">
+                    <label for="Name" class="form-label">Nombre de piscigranja</label>
+                    <input type="text" class="form-control" name="Name" [(ngModel)]="fishFarm.Name" [disabled]="disableAll">
                     <div [ngClass]="errorName ? 'errorMasssage' : 'hidenErrorMasssage'">
                         <p>Debe ingresar el nombre de la piscigranja.</p>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Descripción (opcional)</label>
-                    <textarea class="form-control" name="Description" [(ngModel)]="fishFarm.Description"></textarea>
+                    <label for="Description" class="form-label">Descripción (opcional)</label>
+                    <textarea class="form-control" name="Description" [(ngModel)]="fishFarm.Description" [disabled]="disableAll"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Tipo de pez (opcional)</label>
-                    <select class="form-select" aria-label="Default select example" name="FishTypeId" [(ngModel)]="fishFarm.FishTypeId">
-                        <option selected value="0">Pez</option>
-                        <option *ngFor="let typeFish of typeFishes" value="typeFish.Id">{{typeFish.Name}}</option>
+                    <label for="FishTypeId" class="form-label">Tipo de pez (opcional)</label>
+                    <select class="form-select" aria-label="Default select example" name="FishTypeId" [(ngModel)]="fishFarm.TypeFishId" [disabled]="disableAll">
+                        <option selected value="null">Pez</option>
+                        <option *ngFor="let typeFish of typeFishes" [ngValue]="typeFish.Id">{{typeFish.Name}}</option>
                     </select>
                 </div>
                 <div class="addFishFarmFormContainerButton">
-                    <button type="submit" class="addFishFarmFormButton btn btn-outline-info" (click)="changeSaveWithoutConfiguration(true)">Guardar sin configuración</button>
-                    <button type="submit" class="addFishFarmFormButton btn btn-primary" (click)="changeSaveWithoutConfiguration(false)">Guardar cambios</button>
+                    <button type="submit" class="addFishFarmFormButton btn btn-outline-info" (click)="changeSaveWithoutConfiguration(true)" [disabled]="disableAll">Guardar sin configuración</button>
+                    <button type="submit" class="addFishFarmFormButton btn btn-primary" (click)="changeSaveWithoutConfiguration(false)" [disabled]="disableAll">Guardar cambios</button>
                 </div>
             </form>
         </div>

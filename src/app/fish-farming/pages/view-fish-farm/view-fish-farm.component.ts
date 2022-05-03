@@ -6,6 +6,7 @@ import { FishFarmService } from '../../services/fish-farm.service';
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
 import { fishFarm } from '../../interfaces/fishFarm.interface';
 import { response } from '../../interfaces/response.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-view-fish-farm',
@@ -14,7 +15,8 @@ import { response } from '../../interfaces/response.interface';
 })
 export class ViewFishFarmComponent implements OnInit, OnDestroy {
     private sub    : any;
-    public deleteFishFamr: boolean = false;
+    public subscriber: Subscription = new Subscription();
+    public deleteFishFarmQuestion: boolean = false;
     public deleteSuccessful: boolean = false;
     public fishFarmName: string = '';
     public subMenus: Array<SubMenu> = [
@@ -26,52 +28,54 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
         }
     ]
 
-    public constructor(private fishFarmService: FishFarmService, private router: Router, private activateRoute: ActivatedRoute) {
-        this.fishFarmService.resetFishFarm();
-        this.fishFarmService.setDevice();
-    }
+    public constructor(private fishFarmService: FishFarmService, private router: Router, private activateRoute: ActivatedRoute) {}
 
     public ngOnInit() {
-        this.sub = this.activateRoute.params.subscribe(params => {
-            this.fishFarmService.setFishFarmId(params['id']);
-            this.fishFarmService.viewFishFarm().subscribe(
-                (fishFarm: fishFarm) => {
-                    this.fishFarmService.setFishFarm(fishFarm);
-                    this.fishFarmName = this.fishFarmService.fishFarm.Name;
-                    if( fishFarm.Code != '200') {
-                        this.router.navigate(['fish-farm']);
-                    }
-                    this.fishFarmService.setDevice();
-                    this.fishFarmService.getDevices();
-                }
-            )
-        });
+        this.viewFishFarm();
+        this.subscriber = this.fishFarmService.subjectListIot.subscribe(
+            () => {
+                this.viewFishFarm();
+            }
+          )
+    }
 
-        
-      }
-    
     public ngOnDestroy() {
         this.sub.unsubscribe();
     }
 
-    public redirectTo(uri:string){
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-        this.router.navigate([uri]));
+    public viewFishFarm(): void {
+        this.fishFarmService.resetFishFarm();
+        this.fishFarmService.setDevice();
+        this.sub = this.activateRoute.params.subscribe(params => {
+            this.fishFarmService.setFishFarmId(params['id']);
+            this.fishFarmService.viewFishFarm().subscribe(
+                (fishFarm: fishFarm) => {
+                    if( fishFarm.Code != '200') {
+                        this.router.navigate(['fish-farm']);
+                    }
+                    this.fishFarmService.setFishFarm(fishFarm);
+                    this.fishFarmName = this.fishFarmService.fishFarm.Name;
+                    this.fishFarmService.setDevice();
+                    this.fishFarmService.getDevices();
+                }
+            )
+        }); 
     }
+    
+    
 
     public deleteFishFarm($event: any) {
         if($event == true) {
-            this.deleteFishFamr = $event;
+            this.deleteFishFarmQuestion = $event;
         }
     }
 
     public confirmationContinue($event: any) {
-        this.deleteFishFamr = $event;
-        if(this.deleteFishFamr == true) {
+        this.deleteFishFarmQuestion = false;
+        if($event == true) {
             this.fishFarmService.deleteFishFarm().subscribe(
                 (response: response) => {
                     if (response.Code == '200') {
-                        this.deleteFishFamr = false; 
                         this.deleteSuccessful = true;
                     }
                 }
@@ -81,6 +85,7 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
 
     public confirmationDelete($event: any) {
         this.deleteSuccessful = $event;
-        this.redirectTo('fish-farm');
+        this.deleteSuccessful = false;
+        this.router.navigate(['fish-farm']);
     }
 }

@@ -5,6 +5,7 @@ import { FishFarmService } from '../../services/fish-farm.service';
 
 import { fishFarmAbbreviated } from '../../interfaces/fishFarmAbbreviated.interface';
 import { fishFarms } from '../../interfaces/fishFarms.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-fish-farms-page',
@@ -14,6 +15,7 @@ import { fishFarms } from '../../interfaces/fishFarms.interface';
 export class FishFarmsPageComponent implements OnInit {
     public hideContainer: boolean = true;
     public listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];
+    public subscriber: Subscription = new Subscription();
     public subMenus: Array<SubMenu> = [
         {
             name: 'Agregar una piscigranja',
@@ -33,6 +35,11 @@ export class FishFarmsPageComponent implements OnInit {
 
     public ngOnInit(): void {
         this.findListFishFarms();
+        this.subscriber = this.fishFarmService.subjectListFishFarm.subscribe(
+            () => {
+                this.findListFishFarms();
+            }
+        )
     }
 
     public findListFishFarms(): void {
@@ -44,5 +51,4 @@ export class FishFarmsPageComponent implements OnInit {
             }
         )
     }
-
 }

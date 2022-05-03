@@ -24,7 +24,6 @@ $width-long: 1200px;
     border: 1px solid #687782;
     border-radius: 8px;
     height: 100%;
-    padding: 24px 16px 12px;
     position: relative;
 }
 
@@ -34,7 +33,7 @@ $width-long: 1200px;
     left: 16px;
     position: absolute;
     top: -16px;
-
+    z-index: 10;
     & p {
         margin: 0;
         padding: 4px 8px;
@@ -48,7 +47,80 @@ $width-long: 1200px;
     }
 }
 
+.setUpIotOverflow {
+    height: 81vh;
+    overflow-y: scroll;
+    padding: 24px 16px 12px;
+
+}
+
 .iotFlex {
     display: flex;
     margin: 12px 0;
+}
+
+.ContainerButton {
+    width: 100%;
+}
+
+.setUpIotButton {
+    width: 100%;
+}
+
+.iot {
+    & h3 {
+        font-size: 18px;
+    }
+}
+
+.iotRange {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+
+
+    & label {
+        font-size: 12px;
+    }
+
+    &X {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        & p {
+            position: absolute;
+            top: 60%;
+            margin: 0;
+        }
+    }
+}
+
+.mb-3 {
+    margin: 0 !important;
+}
+
+.errorMasssage {
+    color: #dc3545;
+    grid-column: 1 / 6;
+    font-size: 12px;
+    
+    & p {
+        margin: 0;
+    }
+}
+
+.hidenErrorMasssage {
+    display: none;
+}
+
+.confirmationContainer {
+    &::after {
+        content: '';
+        background: white;
+        height: calc(100vh - 64px);
+        opacity: 0.2;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
 }

@@ -2,45 +2,118 @@
     <div class="setUpIotContainerGrid">
         <app-sub-header [subMenus]='subMenus'></app-sub-header>
         <div class="setUpIotContainer">
-            <div class="setUpIotTitle">
-                <!-- Cambiar por el nombre de la piscigranja -->
-                <p>Piscigranja</p>
-            </div>
-            <div class="setUpIotContainerSesors">
-                <h2>Dispositivos Iot</h2>
-                <div>
-                    <app-iot-range></app-iot-range>
-                    <!-- Se puede usar el componente app-iot-device cuando se registra un dispositivo iot -->
-                    <div class="iotFlex">
-                        <app-iot-device></app-iot-device>
-                        <app-iot-add></app-iot-add>
+            <form (ngSubmit)="editParams()">
+                <div class="setUpIotOverflow">
+                    <div class="setUpIotTitle">
+                        <p>{{fishFarmConfig.Name}}</p>
+                    </div>
+                    <div class="setUpIotContainerSesors">
+                        <h2>Dispositivos Iot</h2>
+                        <div>
+                            <div class="iot">
+                                <h3>Sensores de Temperatura</h3>
+                                <div class="iotRange">
+                                    <div class="mb-3">
+                                        <label for="MinTemp" class="form-label">Rango mínimo Óptimo</label>
+                                        <input type="number" class="form-control" [(ngModel)]="fishFarmConfig.MinTemp" name="MinTemp">
+                                    </div>
+                                    <div class="iotRangeX">
+                                        <p>≥ X ≥</p>
+                                        </div>
+                                    <div class="mb-3">
+                                        <label for="MaxTemp" class="form-label">Rango máximo Óptimo</label>
+                                        <input type="number" class="form-control" [(ngModel)]="fishFarmConfig.MaxTemp" name="MaxTemp">
+                                    </div>
+                                    <div [ngClass]="errorTemp ? 'errorMasssage' : 'hidenErrorMasssage'">
+                                        <p>El mínimo o máximo de temperatura esta vacio</p>
+                                    </div>
+                                    <div [ngClass]="errorTempRange ? 'errorMasssage' : 'hidenErrorMasssage'">
+                                        <p>El rango mínimo es mayor que el máximo de temperatura</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="iotFlex">
+                                <app-iot-device *ngFor="let temperature of listTemperature" [iotDevice]="temperature"></app-iot-device>
+                                <app-iot-add [typeDevice]="'temp'"></app-iot-add>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="iot">
+                                <h3>Sensores de pH</h3>
+                                <div class="iotRange">
+                                    <div class="mb-3">
+                                        <label for="MinPh" class="form-label">Rango mínimo Óptimo</label>
+                                        <input type="number" class="form-control" [(ngModel)]="fishFarmConfig.MinPh" name="MinPh">
+                                    </div>
+                                    <div class="iotRangeX">
+                                        <p>≥ X ≥</p>
+                                        </div>
+                                    <div class="mb-3">
+                                        <label for="MaxPh" class="form-label">Rango máximo Óptimo</label>
+                                        <input type="number" class="form-control" [(ngModel)]="fishFarmConfig.MaxPh" name="MaxPh">
+                                    </div>
+                                    <div [ngClass]="errorPh ? 'errorMasssage' : 'hidenErrorMasssage'">
+                                        <p>El mínimo o máximo de pH esta vacio</p>
+                                    </div>
+                                    <div [ngClass]="errorPhRange ? 'errorMasssage' : 'hidenErrorMasssage'">
+                                        <p>El rango mínimo es mayor que el máximo de temperatura</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="iotFlex">
+                                <app-iot-device *ngFor="let ph of listPh" [iotDevice]="ph"></app-iot-device>
+                                <app-iot-add [typeDevice]="'ph'"></app-iot-add>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="iot">
+                                <h3>Sensores de pH</h3>
+                                <div class="iotRange">
+                                    <div class="mb-3">
+                                        <label for="MinDo" class="form-label">Rango mínimo Óptimo</label>
+                                        <input type="number" class="form-control" [(ngModel)]="fishFarmConfig.MinDo" name="MinDo">
+                                    </div>
+                                    <div class="iotRangeX">
+                                        <p>≥ X ≥</p>
+                                        </div>
+                                    <div class="mb-3">
+                                        <label for="MaxDo" class="form-label">Rango máximo Óptimo</label>
+                                        <input type="number" class="form-control" [(ngModel)]="fishFarmConfig.MaxDo" name="MaxDo">
+                                    </div>
+                                    <div [ngClass]="errorDo ? 'errorMasssage' : 'hidenErrorMasssage'">
+                                        <p>El mínimo o máximo de Oxigeno Disuelto esta vacio</p>
+                                    </div>
+                                    <div [ngClass]="errorDoRange ? 'errorMasssage' : 'hidenErrorMasssage'">
+                                        <p>El rango mínimo es mayor que el máximo de temperatura</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="iotFlex">
+                                <app-iot-device *ngFor="let do of listDo" [iotDevice]="do"></app-iot-device>
+                                <app-iot-add [typeDevice]="'disoxi'"></app-iot-add>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="iot">
+                                <h3>Compuertas</h3>
+                            </div>
+                            <div class="iotFlex">
+                                <app-iot-device *ngFor="let compuerta of listCompuertas" [iotDevice]="compuerta"></app-iot-device>
+                                <app-iot-add [typeDevice]="'gate'"></app-iot-add>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ContainerButton">
+                        <button type="submit" class="setUpIotButton btn btn-primary" (click)="editParams">Guardar cambios</button>
                     </div>
                 </div>
-                <div>
-                    <app-iot-range></app-iot-range>
-                    <div class="iotFlex">
-                        <app-iot-device></app-iot-device>
-                        <app-iot-add></app-iot-add>
-                    </div>
-                </div>
-                <div>
-                    <app-iot-range></app-iot-range>
-                    <div class="iotFlex">
-                        <app-iot-device></app-iot-device>
-                        <app-iot-add></app-iot-add>
-                    </div>
-                </div>
-                <div>
-                    <app-iot-range></app-iot-range>
-                    <div class="iotFlex">
-                        <app-iot-device></app-iot-device>
-                        <app-iot-add></app-iot-add>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <div>
         <router-outlet></router-outlet>
     </div>
+</div>
+<div *ngIf="alertParams" class="confirmationContainer">
+    <app-confirmation-message (continueEvent)="confirmationContinue( $event )"></app-confirmation-message>
 </div>

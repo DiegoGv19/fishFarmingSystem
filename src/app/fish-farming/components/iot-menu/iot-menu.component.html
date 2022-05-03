@@ -6,7 +6,7 @@
 <nav [ngClass]="toggleIotMenuNav ? 'noIotMenuNav' : 'iotMenuNav'">
     <ul class="iotMenu">
         <li class="iotMenuItem">
-            <a class="iotMenuLink" href="#">Desinstalar</a>
+            <p class="iotMenuLink" (click)="deleteIot()">Desinstalar</p>
         </li>
     </ul>
 </nav>

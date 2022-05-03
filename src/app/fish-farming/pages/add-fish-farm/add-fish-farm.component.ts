@@ -16,11 +16,13 @@ export class AddFishFarmComponent {
     public alertAddFishFarm: boolean = false;
     public saveWithoutConfiguration: boolean = false;
     public errorName: boolean = false;
+    public disableAll: boolean = false;
     private _typeFishes: Array<typeFish> = [];
     private _fishFarm: fishFarmCreate = {
         Name       : '',
         Description: '',
-        FishTypeId : ''
+        TypeFishId : 'null',
+        Code       : '',
     }
     subMenus: Array<SubMenu> = [
     {
@@ -57,15 +59,11 @@ export class AddFishFarmComponent {
         )
     }
 
-    public redirectTo(uri:string){
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-        this.router.navigate([uri]));
-    }
-
     public createFishFarm() {
         if(this._fishFarm.Name != '') {
             this.errorName = false;
             this.alertAddFishFarm = true
+            this._fishFarm.TypeFishId = this._fishFarm.TypeFishId != 'null' ? this._fishFarm.TypeFishId : null;
         }
         else {
             this.errorName = true;
@@ -79,13 +77,16 @@ export class AddFishFarmComponent {
                 if(fishFarmCreateResponse.Code == '200') {
                     if(!this.saveWithoutConfiguration) {
                         this.fishFarmService.setFishFarmId(fishFarmCreateResponse.Id);
+                        this.disableAll = true;
                         this.router.navigate(['fish-farm/add-fish-farm/set-up-iot']);
                     }
                     else {
-                        this.redirectTo('fish-farm');
+                        this._fishFarm.Name = '';
+                        this._fishFarm.Description = '';
+                        this._fishFarm.TypeFishId = 'null';
                     }
                 }
             }
-        )
+        );
     }
 }

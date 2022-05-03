@@ -14,7 +14,7 @@
         <router-outlet></router-outlet>
     </div>
 </div>
-<div *ngIf="deleteFishFamr" class="confirmationContainer">
+<div *ngIf="deleteFishFarmQuestion" class="confirmationContainer">
     <app-delete-fish-farm (continueEvent)="confirmationContinue( $event )"></app-delete-fish-farm>
 </div>
 <div *ngIf="deleteSuccessful" class="confirmationContainer">

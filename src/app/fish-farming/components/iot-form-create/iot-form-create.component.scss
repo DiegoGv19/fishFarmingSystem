@@ -1,0 +1,85 @@
+.iotForm {
+    height: 96%;
+    position: relative;
+    width: 100%;
+}
+
+.iotFormDataConetion {
+    font-size: 16px;
+    margin-top: 12px;
+}
+
+.iotFormImage {
+    height: 128px;
+    margin: 12px auto 0;
+    width: 100%;
+}
+
+.iotFormImageTitle {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    & div {
+        cursor: pointer;
+        text-align: end;
+    }
+}
+
+.text-muted {
+    font-size: 8.5px;
+}
+
+.iotFormTitle {
+    font-size: 16px;
+}
+
+.iotFormCode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &Information {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & p {
+            margin: 0 12px 0;
+        }
+    }
+}
+
+.iotActive, .iotNoActive {
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+}
+
+.iotActive {
+    background: green;
+}
+
+.iotNoActive {
+    background: red;
+}
+
+.saveConetion, .saveChange {
+    margin-top: 16px;
+    width: 100%;
+}
+
+.saveChange {
+    bottom: 0;
+    left: 0;
+    margin-top: 0;
+    position: absolute;
+}
+
+.errorMasssage {
+    color: #dc3545;
+    font-size: 12px;
+}
+
+.hidenErrorMasssage {
+    display: none;
+}
+

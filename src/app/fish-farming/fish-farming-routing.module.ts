@@ -25,7 +25,7 @@ const routes: Routes = [
             component: SetUpIotComponent,
             children: [
             {
-                path: 'add-iot',
+                path: 'add-iot/:type',
                 component: AddIotComponent
             }
             ]
@@ -54,7 +54,19 @@ const routes: Routes = [
     },
     {
         path: 'edit/:id',
-        component: EditFishFarmComponent
+        component: EditFishFarmComponent,
+        children: [
+            {
+                path: 'set-up-iot',
+                component: SetUpIotComponent,
+                children: [
+                {
+                    path: 'add-iot/:type',
+                    component: AddIotComponent
+                }
+                ]
+            }
+            ]
     },
     {
         path: 'general-configuration',

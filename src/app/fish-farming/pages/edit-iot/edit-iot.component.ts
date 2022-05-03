@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
 import { FishFarmService } from '../../services/fish-farm.service';
 import { device } from '../../interfaces/device.interface';
+import { response } from '../../interfaces/response.interface';
 
 @Component({
   selector: 'app-edit-iot',
@@ -11,6 +12,8 @@ import { device } from '../../interfaces/device.interface';
 })
 export class EditIotComponent {
     private sub    : any;
+    public deleteIotQuestion: boolean = false;
+    public deleteSuccessful: boolean = false;
     public device: device = {
         Name       :'',
         TypeDevice :'',
@@ -51,4 +54,28 @@ export class EditIotComponent {
         this.sub.unsubscribe();
     }
 
+    public deleteEvent($event: boolean) {
+        this.deleteIotQuestion = $event;
+    }
+
+    public questionDelete($event: boolean) {
+        this.deleteIotQuestion = false;
+        if($event) {
+            this.deleteSuccessful = true;
+        }
+    }
+
+    public confirmationDelete($event: boolean ) {
+        this.deleteSuccessful = false;
+        if(!$event) {
+            this.fishFarmService.deleteDevice().subscribe(
+                (response: response) => {
+                    console.log(response);
+                    if(response.Code == '200') {
+                        this.router.navigate(['fish-farm/view/', this.fishFarmService.fishFarmId]);
+                    }
+                }
+            )
+        }
+    }
 }
