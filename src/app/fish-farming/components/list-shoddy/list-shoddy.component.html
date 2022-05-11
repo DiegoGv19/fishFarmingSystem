@@ -8,7 +8,9 @@
         </div>
     </div>
     <div>
-        <app-shoddy></app-shoddy>
-        <app-shoddy></app-shoddy>
+        <app-shoddy *ngFor="let history of histories" [history]="history"></app-shoddy>
+        <div class="noHistories" *ngIf="histories.length == 0">
+            <p>No hay ninguna registro.</p>
+        </div>
     </div>
 </div>

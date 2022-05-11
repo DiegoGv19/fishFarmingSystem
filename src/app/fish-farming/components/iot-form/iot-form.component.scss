@@ -4,7 +4,7 @@
 }
 
 .iotFormImage {
-    height: 128px;
+    height: 200px;
     margin: 12px auto 0;
     width: 100%;
 }
@@ -61,6 +61,14 @@
     width: 100%;
 }
 
+.containerSaveChange {
+    display: block;
+    height: 100px;
+    position: relative;
+    width: 100%;
+}
+
 .saveChange {
-    margin-top: 124px;
+    position: absolute;
+    bottom: 0;
 }

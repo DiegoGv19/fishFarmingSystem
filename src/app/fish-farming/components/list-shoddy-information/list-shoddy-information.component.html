@@ -4,6 +4,19 @@
         <p>Parámetros</p>
         <p>Nivel</p>
     </div>
-    <app-shoddy-information></app-shoddy-information>
-    <app-shoddy-information></app-shoddy-information>
+    <div class="shoddyInformationBody">
+        <p>Temperatura</p>
+        <p *ngIf="historyView.Temperature != null">{{historyView.Temperature}}</p>
+        <p *ngIf="historyView.Temperature == null">-</p>
+    </div>
+    <div class="shoddyInformationBody">
+        <p>pH</p>
+        <p *ngIf="historyView.Ph != null">{{historyView.Ph}}</p>
+        <p *ngIf="historyView.Ph == null">-</p>
+    </div>
+    <div class="shoddyInformationBody">
+        <p>Oxigeno Disuelto</p>
+        <p *ngIf="historyView.Do != null">{{historyView.Do}}</p>
+        <p *ngIf="historyView.Do == null">-</p>
+    </div>
 </div>

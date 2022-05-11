@@ -12,6 +12,7 @@ import { response } from '../../interfaces/response.interface';
 })
 export class EditIotComponent {
     private sub    : any;
+    public alertAddIot: boolean = false;
     public deleteIotQuestion: boolean = false;
     public deleteSuccessful: boolean = false;
     public device: device = {
@@ -21,7 +22,8 @@ export class EditIotComponent {
         Description:'',
         DeviceCode :'',
         IsConnected:'',
-        Code       : ''
+        Code       :'',
+        Image      :'',
     }
     public subMenus: Array<SubMenu> = [
         {
@@ -42,12 +44,10 @@ export class EditIotComponent {
                     if( device.Code != '200') {
                         this.router.navigate(['fish-farm/view', this.fishFarmService.fishFarmId]);
                     }
-                   this.device = device
+                    this.device = device
                 }
             )
         });
-
-        
       }
     
     public ngOnDestroy() {
@@ -65,17 +65,44 @@ export class EditIotComponent {
         }
     }
 
+    public continueIoTEvent(confirmation: boolean): void {
+        this.alertAddIot = true;
+    }
+
     public confirmationDelete($event: boolean ) {
         this.deleteSuccessful = false;
         if(!$event) {
             this.fishFarmService.deleteDevice().subscribe(
                 (response: response) => {
-                    console.log(response);
                     if(response.Code == '200') {
                         this.router.navigate(['fish-farm/view/', this.fishFarmService.fishFarmId]);
                     }
                 }
             )
         }
+    }
+
+    public confirmationContinue(confirmation: boolean): void {
+        this.alertAddIot = confirmation;
+        this.saveIot();
+    }
+
+    public saveIot(): void {
+        this.alertAddIot = false;
+        const formIot = new FormData();
+        const Image = this.fishFarmService.iotFile.length != 0 ? this.fishFarmService.iotFile[0] : '';
+        formIot.append('Image', Image);
+        formIot.append('Name', this.device.Name);
+        formIot.append('Description', this.device.Description);
+        formIot.append('DeviceCode', this.device.DeviceCode);
+        const IsImageDeleted = this.fishFarmService.deleteIot ? 'true' : 'false';
+        formIot.append('IsImageDeleted', IsImageDeleted);
+        this.fishFarmService.editDevice(formIot).subscribe(
+            (response: response) => {
+                if(response.Code == '200') {
+                    this.router.navigate( ['fish-farm/view/', this.fishFarmService.fishFarmId]);
+                }
+            }
+        )
     }
 }

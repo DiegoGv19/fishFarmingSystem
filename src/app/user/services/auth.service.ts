@@ -18,7 +18,8 @@ export class AuthService {
     private _auth: Auth | undefined;
     private _httpOptions: HttpHeaders = new HttpHeaders({
         "Content-Type" : "application/json",
-    }); 
+    });
+    private _httpOptionsMultipart: HttpHeaders = new HttpHeaders({})
     
     constructor( private http: HttpClient, private apiService: ApiService) {}
 
@@ -30,6 +31,10 @@ export class AuthService {
         return this._httpOptions;
     }
 
+    public get httpOptionsMultipart(): HttpHeaders {
+        return this._httpOptionsMultipart;
+    }
+
     public setAuth(auth: Auth): void {
         auth.Password =shajs('sha256').update(auth.Password).digest('hex');
         this._auth = auth;
@@ -38,6 +43,12 @@ export class AuthService {
     public setHttpOptions(): void {
         this._httpOptions = new HttpHeaders({
             "Content-Type" : "application/json",
+            "Authorization":  `Bearer ${this._user!.Token}`
+        });
+    }
+
+    public setHhttpOptionsMultipart(): void {
+        this._httpOptionsMultipart = new HttpHeaders({
             "Authorization":  `Bearer ${this._user!.Token}`
         });
     }
@@ -86,6 +97,7 @@ export class AuthService {
             map( user => {
                 this._user = user;
                 this.setHttpOptions();
+                this.setHhttpOptionsMultipart();
                 return true;
             })
         );

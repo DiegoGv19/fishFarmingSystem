@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SubMenu } from 'src/app/main/components/sub-header/interfaces/subMenu.iterface';
 import { FishFarmService } from '../../services/fish-farm.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { fishFarmCreateResponse } from '../../interfaces/fishFarmCreateResponse.
   templateUrl: './add-fish-farm.component.html',
   styleUrls: ['./add-fish-farm.component.scss']
 })
-export class AddFishFarmComponent {
+export class AddFishFarmComponent implements OnInit {
     public alertAddFishFarm: boolean = false;
     public saveWithoutConfiguration: boolean = false;
     public errorName: boolean = false;
@@ -41,7 +41,9 @@ export class AddFishFarmComponent {
        return this._fishFarm;
     }
 
-    public constructor(private fishFarmService: FishFarmService, private router: Router){
+    public constructor(private fishFarmService: FishFarmService, private router: Router) {}
+
+    public ngOnInit() {
         this.findTypeFishes();
     }
 

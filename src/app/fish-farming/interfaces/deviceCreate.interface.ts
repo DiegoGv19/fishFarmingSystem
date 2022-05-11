@@ -1,7 +1,8 @@
 export interface deviceCreate {
-    FishFarmId:   string;
+    FishFarmId  : string;
     TypeDeviceId: string;
-    Name:         string;
-    Description:  string;
-    DeviceCode:   string;
+    Name        : string;
+    Description : string;
+    DeviceCode  : string;
+    Image       : string|null;
 }

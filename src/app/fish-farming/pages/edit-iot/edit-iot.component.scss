@@ -39,3 +39,16 @@ $width-long: 1200px;
         padding: 4px 8px;
     }
 }
+
+.confirmationContainer {
+    &::before {
+        content: '';
+        background: white;
+        height: calc(100vh - 64px);
+        opacity: 0.2;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+}

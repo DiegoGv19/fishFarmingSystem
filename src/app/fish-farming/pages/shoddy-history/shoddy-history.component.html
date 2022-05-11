@@ -3,15 +3,15 @@
         <app-sub-header [subMenus]='subMenus'></app-sub-header>
         <div class="shoddyHistoryInformaction">
             <div class="shoddyHistoryTitle">
-                <p>Historial de mala calidad...</p>
+                <p>Historial de mala calidad</p>
             </div>
             <div>
-                <app-shoddy-filter></app-shoddy-filter>
-                <app-list-shoddy></app-list-shoddy>
+                <app-shoddy-filter [typeSensors]="typeSensors"></app-shoddy-filter>
+                <app-list-shoddy [histories]="histories"></app-list-shoddy>
             </div>
         </div>
-        <div>
-            <router-outlet></router-outlet>
-        </div>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
     </div>
 </div>

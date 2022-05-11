@@ -17,9 +17,11 @@ import { fishFarmCreateResponse } from '../interfaces/fishFarmCreateResponse.int
 import { fishFarmCreate } from '../interfaces/fishFarmCreate.interface';
 import { deviceCreate } from '../interfaces/deviceCreate.interface';
 import { typeDevicesResponse } from '../interfaces/typeDevicesResponse.interface';
-import { fishFarmAbbreviated } from '../interfaces/fishFarmAbbreviated.interface';
 import { fishFarmConfig } from '../interfaces/fishFarmConfig.interfacce';
 import { parameters } from '../interfaces/parameters.interface';
+import { histories } from '../interfaces/histories.interface';
+import { historyView } from '../interfaces/historyView.interface';
+import { typeSensorsResponse } from '../interfaces/typeSensorsResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +38,16 @@ export class FishFarmService {
     private _url_fish_farms_delete: string = 'FishFarms';
     private _url_fish_farms_edit: string = 'FishFarms';
     private _url_device_create: string = 'FishFarms/Devices';
+    private _url_device_edit: string = 'FishFarms/Devices';
     private _url_device_view: string = 'FishFarms/Devices';
     private _url_device_delete: string = 'FishFarms/Devices';
     private _url_parameter_edit: string = 'FishFarms/UpdateParameterRange';
     private _url_type_fishes_view: string = 'Organization/TypeFishes';
     private _url_type_devices_view: string = 'Organization/TypeDevices';
-    
+    private _url_type_sensors_view: string = 'Organization/TypeSensors';
+    private _url_history_view_list: string = 'FishFarms';
+    private _url_history_view: string = 'FishFarms/History';
+
     private _fishFarm: fishFarm = {
         Name            : '',
         LastTemperature : 0,
@@ -71,8 +77,13 @@ export class FishFarmService {
 
     private _subjectListFishFarm:Subject<void> = new Subject<void>();
     private _subjectListIot:Subject<void> = new Subject<void>();
+    private _subjectHistory:Subject<void> = new Subject<void>();
     private _fishFarmId : string = '';
+    private _iotFile: any = [];
+    private _deleteIot: boolean = false;
     private _deviceId   : string = '';
+    private _historyId  : string = '';
+    private _historyFilterId: string = '';
     private _typeDeviceId: string = '';
     private _typeDeviceName: string = '';
     private _listCompuertas : Array<deviceAbbreviated> = [];
@@ -88,6 +99,14 @@ export class FishFarmService {
 
     public get subjectListIot():Subject<void> {
         return this._subjectListIot;
+    }
+
+    public get subjectHistory():Subject<void> {
+        return this._subjectHistory;
+    }
+
+    public SetsubjectHistory(): void {
+        this.subjectHistory.next();
     }
 
     public get fishFarm(): fishFarm {
@@ -114,12 +133,48 @@ export class FishFarmService {
         this._fishFarmId = fishFarmId;
     }
 
+    public get iotFile(): any {
+        return this._iotFile;
+    }
+
+    public setIotFile(iotFile: any): void {
+        this._iotFile.push(iotFile);
+    }
+
+    public resetIotFile(): void {
+        this._iotFile = [];
+    }
+
+    public get deleteIot(): boolean {
+        return this._deleteIot;
+    }
+
+    public setDeleteIot(deleteIot: boolean): void {
+        this._deleteIot = deleteIot;
+    }
+
     public get deviceId(): string {
         return this._deviceId;
     }
 
     public setDeviceId(deviceId: string): void {
         this._deviceId = deviceId;
+    }
+
+    public get historyId(): string {
+        return this._historyId;
+    }
+
+    public setHistoryId(historyId: string): void {
+        this._historyId = historyId;
+    }
+
+    public get historyFilterId(): string {
+        return this._historyFilterId;
+    }
+
+    public setHistoryFilterId(historyFilterId: string): void {
+        this._historyFilterId = historyFilterId;
     }
 
     public get typeDeviceName(): string {
@@ -273,8 +328,17 @@ export class FishFarmService {
         return this.http.get<device>(`${this.apiService.urlApi}/${this._url_device_view}/${this._deviceId}`, { headers: this.authService.httpOptions });
     }
 
-    public createDevice(device: deviceCreate): Observable<response> {
-        return this.http.post<response>(`${this.apiService.urlApi}/${this._url_device_create}`, device, { headers: this.authService.httpOptions })
+    public createDevice(device: any): Observable<response> {
+        return this.http.post<response>(`${this.apiService.urlApi}/${this._url_device_create}`, device, { headers: this.authService.httpOptionsMultipart })
+        .pipe(
+            tap(() => {
+                this._subjectListIot.next();
+            })
+        )
+    }
+
+    public editDevice(device: any): Observable<response> {
+        return this.http.put<response>(`${this.apiService.urlApi}/${this._url_device_edit}/${this._deviceId}`, device, { headers: this.authService.httpOptionsMultipart })
         .pipe(
             tap(() => {
                 this._subjectListIot.next();
@@ -299,7 +363,19 @@ export class FishFarmService {
         return this.http.get<typeDevicesResponse>(`${this.apiService.urlApi}/${this._url_type_devices_view}`, { headers: this.authService.httpOptions });
     }
 
+    public findTypeSensors(): Observable<typeSensorsResponse> {
+        return this.http.get<typeSensorsResponse>(`${this.apiService.urlApi}/${this._url_type_sensors_view}`, { headers: this.authService.httpOptions });
+    }
+
     public editParameters(parameters: parameters): Observable<response> {
         return this.http.put<response>(`${this.apiService.urlApi}/${this._url_parameter_edit}`, parameters, { headers: this.authService.httpOptions });
+    }
+
+    public findHistoryList(): Observable<histories> {
+        return this.http.get<histories>(`${this.apiService.urlApi}/${this._url_history_view_list}/${this.fishFarmId}/History?TypeDeviceId=${this._historyFilterId}`, { headers: this.authService.httpOptions });
+    }
+
+    public findHistory(): Observable<historyView> {
+        return this.http.get<historyView>(`${this.apiService.urlApi}/${this._url_history_view}/${this._historyId}`, { headers: this.authService.httpOptions });
     }
 }

@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="iotFlex">
-                                <app-iot-device *ngFor="let temperature of listTemperature" [iotDevice]="temperature"></app-iot-device>
+                                <app-iot-device-no-link *ngFor="let temperature of listTemperature" [iotDevice]="temperature"></app-iot-device-no-link>
                                 <app-iot-add [typeDevice]="'temp'"></app-iot-add>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="iotFlex">
-                                <app-iot-device *ngFor="let ph of listPh" [iotDevice]="ph"></app-iot-device>
+                                <app-iot-device-no-link *ngFor="let ph of listPh" [iotDevice]="ph"></app-iot-device-no-link>
                                 <app-iot-add [typeDevice]="'ph'"></app-iot-add>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="iotFlex">
-                                <app-iot-device *ngFor="let do of listDo" [iotDevice]="do"></app-iot-device>
+                                <app-iot-device-no-link *ngFor="let do of listDo" [iotDevice]="do"></app-iot-device-no-link>
                                 <app-iot-add [typeDevice]="'disoxi'"></app-iot-add>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                 <h3>Compuertas</h3>
                             </div>
                             <div class="iotFlex">
-                                <app-iot-device *ngFor="let compuerta of listCompuertas" [iotDevice]="compuerta"></app-iot-device>
+                                <app-iot-device-no-link *ngFor="let compuerta of listCompuertas" [iotDevice]="compuerta"></app-iot-device-no-link>
                                 <app-iot-add [typeDevice]="'gate'"></app-iot-add>
                             </div>
                         </div>

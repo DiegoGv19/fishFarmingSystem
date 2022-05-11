@@ -30,3 +30,10 @@ $width-long: 1200px;
         padding: 4px 8px;
     }
 }
+
+.shoddyContainerGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+    height: 100%;
+}

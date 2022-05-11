@@ -26,7 +26,7 @@ const routes: Routes = [
         component: EmailForPasswordChangeSentComponent,
     },
     {
-        path: 'restore-password',
+        path: 'restore-password/:token',
         component: RestorePasswordComponent,
     },
     {

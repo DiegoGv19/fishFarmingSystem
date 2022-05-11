@@ -26,7 +26,6 @@ import { ListFishFarmsComponent }         from './components/list-fish-farms/lis
 import { ListShoddyComponent }            from './components/list-shoddy/list-shoddy.component';
 import { ListShoddyInformationComponent } from './components/list-shoddy-information/list-shoddy-information.component';
 import { ShoddyFilterComponent }          from './components/shoddy-filter/shoddy-filter.component';
-import { ShoddyInformationComponent }     from './components/shoddy-information/shoddy-information.component';
 import { ShoddyComponent }                from './components/shoddy/shoddy.component';
 
 import { MainModule } from '../main/main.module';
@@ -34,6 +33,7 @@ import { FormsModule } from '@angular/forms';
 import { IotAddComponent } from './components/iot-add/iot-add.component';
 import { EditFishFarmComponent } from './pages/edit-fish-farm/edit-fish-farm.component';
 import { IotFormCreateComponent } from './components/iot-form-create/iot-form-create.component';
+import { IotDeviceNoLinkComponent } from './components/iot-device-no-link/iot-device-no-link.component';
 
 @NgModule({
     declarations: [
@@ -50,6 +50,7 @@ import { IotFormCreateComponent } from './components/iot-form-create/iot-form-cr
         GeneralConfigurationComponent,
         IotAddComponent,
         IotDeviceComponent,
+        IotDeviceNoLinkComponent,
         IotFormComponent,
         IotFormCreateComponent,
         IotMenuComponent,        
@@ -59,7 +60,6 @@ import { IotFormCreateComponent } from './components/iot-form-create/iot-form-cr
         SetUpIotComponent,
         ShoddyComponent,
         ShoddyFilterComponent,
-        ShoddyInformationComponent,
         ShoddyHistoryComponent,
         ViewFishFarmComponent,
         ViewShoddyComponent,

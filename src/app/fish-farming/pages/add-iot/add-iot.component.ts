@@ -23,6 +23,7 @@ export class AddIotComponent implements OnInit {
         Name   :'',
         Description:'',
         DeviceCode :'',
+        Image: '',
     }
     subMenus: Array<SubMenu> = [
         {
@@ -87,14 +88,22 @@ export class AddIotComponent implements OnInit {
 
     public saveIot(): void {
         this.alertAddIot = false;
-        this.device.FishFarmId = this.fishFarmService.fishFarmId;
-        this.device.TypeDeviceId = this.fishFarmService.typeDeviceId;
-        this.fishFarmService.createDevice(this.device).subscribe(
+        const formIot = new FormData();
+        const Image = this.fishFarmService.iotFile.length != 0 ? this.fishFarmService.iotFile[0] : '';
+        formIot.append('Image', Image);
+        formIot.append('FishFarmId', this.fishFarmService.fishFarmId);
+        formIot.append('TypeDeviceId', this.fishFarmService.typeDeviceId);
+        formIot.append('Name', this.device.Name);
+        formIot.append('Description', this.device.Description);
+        formIot.append('DeviceCode', this.device.DeviceCode);
+
+        this.fishFarmService.createDevice(formIot).subscribe(
             (response: response) => {
                 if(response.Code == '200') {
                     this.device.Name = '';
                     this.device.Description = '';
                     this.device.DeviceCode = '';
+                    this.device.Image = '';
                 }
             }
         )
