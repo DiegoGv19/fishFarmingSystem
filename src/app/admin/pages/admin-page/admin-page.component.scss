@@ -1,0 +1,42 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.bodyContainer {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 64px calc(100% - 64px);
+    padding: 0 0 12px;
+}
+
+.adminInformation {
+    height: 100%;
+
+    & div {
+        height: 100%;
+    }
+}
+
+.listAdmin {
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 64px calc(100% - 64px - 16px);
+    height: 100%;
+    width: 100%;
+}
+
+.mainAdminContainer {
+    position: relative;
+    @media only screen and (min-width: $width-long) {
+        display: grid;
+        grid-column-gap: 16px;
+        grid-template-columns: 100%;
+    }
+}
+
+.hide {
+    display: none;
+    @media only screen and (min-width: $width-long) {
+        display: block;
+    }
+}

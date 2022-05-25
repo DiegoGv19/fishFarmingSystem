@@ -16,6 +16,6 @@
         <p *ngIf="correctPassword">Su contraseña es incorrecta, intente nuevamente. Recuerde que luego de 5 intentos fallidos, su cuenta se bloqueará por 5 minutos.</p>
     </div>
     <div class="text-center mt-3">
-        <a href="#" class="link-primary">Olvidé mi contraseña</a>
+        <a class="link-primary" [routerLink]="['../reset-password']">Olvidé mi contraseña</a>
     </div>
 </form>

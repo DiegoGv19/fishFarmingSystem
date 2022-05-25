@@ -1,0 +1,60 @@
+<div class="containerGrid">
+    <div class="createOrganizationContainer">
+        <form (ngSubmit)="validateOrganization()">
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" class="form-control" name="OrganizationName" [(ngModel)]="organization.OrganizationName">
+                <div [ngClass]="errorName ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el nombre de la organización.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="createOrganizationFormImageTitle">
+                    <label for="">Imágen (opcional)</label>
+                    <div (click)="deleteImage()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                        </svg>
+                    </div>
+                </div>
+                <img class="createOrganizationFormImage" [src]="preview" alt="Image IoT">
+                <input type="file" class="form-control" (change)="captureFile($event)" name="Image" [(ngModel)]="organization.Logo">
+                <small class="form-text text-muted">El tamaño de la imágen debe ser máximo de 2 MB y en formato svg, png o jpg.</small>
+            </div>
+            <div class="form-group">
+                <label for="">Correo Electronico</label>
+                <input type="text" class="form-control" name="Email" [(ngModel)]="organization.Email">
+                <div [ngClass]="errorEmil ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el correo electronico de la organización.</p>
+                </div>
+                <div [ngClass]="errorEmilExist ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>El correo electronico ya fue registrado.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Contraseña</label>
+                <input type="password" class="form-control" name="Password" [(ngModel)]="organization.Password">
+                <div [ngClass]="errorPassword ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar la contraseña de la organización.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Nombre del Administrador</label>
+                <input type="text" class="form-control" name="Email" [(ngModel)]="organization.AdminName">
+                <div [ngClass]="errorNameAdmin ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el nombre del andministrador de la organización.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Número de Celular del Administrador</label>
+                <input type="tel" class="form-control" name="Email" [(ngModel)]="organization.AdminPhone">
+                <div [ngClass]="errorPhone ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar un número de la organización.</p>
+                </div>
+            </div>
+            <div class="containerSaveChange">
+                <button class="btn btn-primary saveChange">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</div>

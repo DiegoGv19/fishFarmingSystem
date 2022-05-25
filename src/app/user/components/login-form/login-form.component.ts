@@ -45,9 +45,15 @@ export class LoginFormComponent {
     }
 
     public login(): void {
-        this.authService.login().subscribe( (user: User) => {
-            this.validateLoginRequest(user);
-        })
+        this.authService.login().subscribe( 
+            (user: User) => {
+                this.validateLoginRequest(user);
+           },
+
+           error => {
+              this.validateLoginRequest(error.error);
+           }
+        )
     }
 
     public resetValidate(): void {
@@ -79,7 +85,12 @@ export class LoginFormComponent {
             case 'successfully':
                 this.resetValidate();
                 this.authService.setHttpOptions();
-                this.router.navigate(['./fish-farm']);
+                if (user.Roles[0] == 'administrator') {
+                    this.router.navigate(['./fish-farm']);
+                }
+                else {
+                    this.router.navigate(['./fish-farm']);
+                }
                 break;
                 
             case 'incorrect_password': 

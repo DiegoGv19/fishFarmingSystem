@@ -1,0 +1,58 @@
+<div class="containerGrid">
+    <div class="createFishContainer">
+        <form (ngSubmit)="validateFish()">
+            <div class="form-group">
+                <label for="Name">Nombre</label>
+                <input type="text" class="form-control" name="Name" [(ngModel)]="fish.Name">
+                <div [ngClass]="errorName ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el nombre para el tipo de pez.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="MinTempRang">Rango Minimo de Temperatura</label>
+                <input type="number" class="form-control" name="MinTempRang" [(ngModel)]="fish.MinTempRang">
+                <div [ngClass]="errorMinTempRang ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el parametro mínimo para la temperatura.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="MaxTempRang">Rango Maximo de Temperatura</label>
+                <input type="number" class="form-control" name="MaxTempRang" [(ngModel)]="fish.MaxTempRang">
+                <div [ngClass]="errorMaxTempRang ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el parametro máximo para la temperatura.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="MinPhRang">Rango Minimo de Ph</label>
+                <input type="number" class="form-control" name="MinPhRang" [(ngModel)]="fish.MinPhRang">
+                <div [ngClass]="errorMinPhRang ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el parametro mínimo para el Ph.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="MaxPhRang">Rango Maximo de Ph</label>
+                <input type="number" class="form-control" name="MaxPhRang" [(ngModel)]="fish.MaxPhRang">
+                <div [ngClass]="errorMaxPhRang ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el parametro máximo para el Ph.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="MinDoRang">Rango Minimo de Oxigeno Disuelto</label>
+                <input type="number" class="form-control" name="MinDoRang" [(ngModel)]="fish.MinDoRang">
+                <div [ngClass]="errorMinDoRang ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el parametro mínimo para el Oxigeno Disuelto.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="MaxDoRang">Rango Maximo de Oxigeno Disuelto</label>
+                <input type="number" class="form-control" name="MaxDoRang" [(ngModel)]="fish.MaxDoRang">
+                <div [ngClass]="errorMaxDoRang ? 'errorMasssage' : 'hidenErrorMasssage'">
+                    <p>Debe ingresar el parametro máximo para el Oxigeno Disuelto.</p>
+                </div>
+            </div>
+            <div class="containerSaveChange">
+                <button class="btn btn-primary saveChange">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</div>

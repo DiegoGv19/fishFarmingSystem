@@ -76,6 +76,7 @@ export class AddFishFarmComponent implements OnInit {
         this.alertAddFishFarm = confirmation;
         this.fishFarmService.createFishFarm(this._fishFarm).subscribe(
             (fishFarmCreateResponse: fishFarmCreateResponse) => {
+                console.log(fishFarmCreateResponse);
                 if(fishFarmCreateResponse.Code == '200') {
                     if(!this.saveWithoutConfiguration) {
                         this.fishFarmService.setFishFarmId(fishFarmCreateResponse.Id);

@@ -1,0 +1,66 @@
+.noListFish {
+    color: #dc3545;
+    font-size: 14px;
+    text-align: center;
+}
+
+.listFish{
+    border: 1px solid #687782;
+    border-radius: 8px;
+    height: 100%;
+    padding: 24px 16px 8px;
+    position: relative;
+
+    &:after {
+        background: white;
+        content: 'Piscigranjas';
+        left: 16px;
+        padding: 4px 8px;
+        position: absolute;
+        text-align: center;
+        font-size: 16px;
+        top: -16px;
+    }
+}
+
+.listFishHead{
+    text-align: center;
+    
+    & p {
+        width: 100%;
+    }
+}
+
+.listFishHeadTitle {
+    width: 100%;
+}
+
+.fish {
+    align-items: center;
+    border: 1px solid #687782;
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 16px;
+    padding: 4px 8px;
+
+    &Add {
+        color: #003e6b;
+        cursor: pointer;
+        font-size: 18px;
+        margin: 0;
+        overflow:hidden;
+        text-align: center;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        width: 100%;
+    }
+
+    &Email {
+        color: #003e6b;
+        padding-right: 16px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+    }
+}

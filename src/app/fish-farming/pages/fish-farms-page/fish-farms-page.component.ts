@@ -13,7 +13,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./fish-farms-page.component.scss']
 })
 export class FishFarmsPageComponent implements OnInit {
-    public hideContainer: boolean = true;
     public listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];
     public subscriber: Subscription = new Subscription();
     public subMenus: Array<SubMenu> = [

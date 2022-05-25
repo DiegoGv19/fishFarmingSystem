@@ -138,7 +138,7 @@ export class FishFarmService {
     }
 
     public setIotFile(iotFile: any): void {
-        this._iotFile.push(iotFile);
+        this._iotFile.unshift(iotFile);
     }
 
     public resetIotFile(): void {
@@ -227,10 +227,10 @@ export class FishFarmService {
             if(device.Type == 'ph') {
                 this._listPh.push(device);
             }
-            if(device.Type == 'do') {
+            if(device.Type == 'disoxi') {
                 this._listDo.push(device);
             }
-            if(device.Type == 'com') {
+            if(device.Type == 'gate') {
                 this._listCompuertas.push(device);
             }
         }
@@ -244,10 +244,10 @@ export class FishFarmService {
             if(device.Type == 'ph') {
                 this._listPh.push(device);
             }
-            if(device.Type == 'do') {
+            if(device.Type == 'disoxi') {
                 this._listDo.push(device);
             }
-            if(device.Type == 'com') {
+            if(device.Type == 'gate') {
                 this._listCompuertas.push(device);
             }
         }

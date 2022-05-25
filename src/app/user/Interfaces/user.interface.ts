@@ -3,4 +3,5 @@ export interface User {
     Token : string;
     Code  : string;
     Type  : string;
+    Roles : Array<string>;
 }

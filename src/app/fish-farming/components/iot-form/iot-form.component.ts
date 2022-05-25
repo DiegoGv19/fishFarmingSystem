@@ -29,6 +29,7 @@ export class IotFormComponent implements OnInit {
     constructor(private fishFarmService: FishFarmService, private router: Router, private sanitizer: DomSanitizer) {}
 
     ngOnInit(): void {
+        this.fishFarmService.resetIotFile();
         this.preview = this.device.ImageUrl == '' ? "https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png" : this.device.ImageUrl;
     }
 
@@ -50,6 +51,7 @@ export class IotFormComponent implements OnInit {
     }
 
     public captureFile(event: any): any {
+        this.fishFarmService.resetIotFile();
         const fileCapture = event.target.files[0];
         this.extraerBase64(fileCapture).then(
             (image: any) => {

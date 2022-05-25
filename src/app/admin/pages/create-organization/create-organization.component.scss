@@ -1,0 +1,98 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.containerGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 100%;
+}
+
+.createOrganizationContainer {
+    border: 1px solid #687782;
+    border-radius: 8px;
+    padding: 24px 16px 12px;
+    position: relative;
+
+    &:after {
+        background: white;
+        content: 'Crear Organización';
+        left: 16px;
+        padding: 4px 8px;
+        position: absolute;
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        top: -16px;
+        width: 60%;
+        white-space: nowrap;
+
+        @media only screen and (min-width: $width-medium) {
+            width: 40%;
+        }
+    }
+}
+
+.createOrganizationFormDataConetion {
+    font-size: 16px;
+    margin-top: 12px;
+}
+
+.createOrganizationFormImage {
+    height: 200px;
+    margin: 12px auto 0;
+    width: 100%;
+}
+
+.createOrganizationFormImageTitle {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    & div {
+        cursor: pointer;
+        text-align: end;
+    }
+}
+
+.text-muted {
+    font-size: 8.5px;
+}
+
+.createOrganizationFormTitle {
+    font-size: 16px;
+}
+
+.createOrganizationFormCode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &Information {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & p {
+            margin: 0 12px 0;
+        }
+    }
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.saveChange {
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-40%);
+}
+
+.errorMasssage {
+    color: #dc3545;
+    font-size: 12px;
+}
+
+.hidenErrorMasssage {
+    display: none;
+}

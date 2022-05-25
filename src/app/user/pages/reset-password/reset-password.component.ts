@@ -8,7 +8,7 @@ import { HeaderData } from '../../components/header/interfaces/headerData.interf
 })
 
 export class ResetPasswordComponent {
-    headerData: HeaderData = {
+    public headerData: HeaderData = {
         image: 'https://igoumicdn.com/uploads/portfolio/Fish-Farm-Logo.jpg',
         title: 'Restablecer contraseña',
         paragraph: 'Ingresa tu correo electrónico para enviarte un enlace con el que puedas restablecer tu contraseña'

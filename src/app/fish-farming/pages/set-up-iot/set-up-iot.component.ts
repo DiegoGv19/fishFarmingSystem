@@ -61,11 +61,13 @@ export class SetUpIotComponent implements OnInit {
     }
 
     public viewFishFarm(): void {
+        console.log(this.fishFarmService.fishFarmId);
         this.fishFarmService.setDevice();
         this.fishFarmService.viewFishFarmConfig().subscribe(
             (fishFarm: fishFarmConfig) => {
                 if( fishFarm.Code == '200') {
                     this.fishFarmService.setFishFarmConfig(fishFarm);
+                    this.fishFarmService.setDevice();
                     this.fishFarmService.getDevicesConfig();
                 }
             }

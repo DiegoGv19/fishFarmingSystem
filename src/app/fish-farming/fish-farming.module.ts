@@ -34,6 +34,7 @@ import { IotAddComponent } from './components/iot-add/iot-add.component';
 import { EditFishFarmComponent } from './pages/edit-fish-farm/edit-fish-farm.component';
 import { IotFormCreateComponent } from './components/iot-form-create/iot-form-create.component';
 import { IotDeviceNoLinkComponent } from './components/iot-device-no-link/iot-device-no-link.component';
+import { ConfigurationComponent } from './page/configuration/configuration.component';
 
 @NgModule({
     declarations: [
@@ -64,6 +65,7 @@ import { IotDeviceNoLinkComponent } from './components/iot-device-no-link/iot-de
         ViewFishFarmComponent,
         ViewShoddyComponent,
         EditFishFarmComponent,
+        ConfigurationComponent,
     ],
     exports: [],
     imports: [

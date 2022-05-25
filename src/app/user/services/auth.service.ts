@@ -7,6 +7,9 @@ import { ApiService } from 'src/app/main/services/api.service';
 
 import { Auth } from '../Interfaces/auth.interface';
 import { User } from '../Interfaces/user.interface';
+import { requestPasswordRecovey } from '../Interfaces/requestPasswordRecovey.interface';
+import { response } from 'src/app/fish-farming/interfaces/response.interface';
+import { recoverPassword } from '../Interfaces/recoverPassword.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,8 @@ import { User } from '../Interfaces/user.interface';
 export class AuthService {
 
     private _url_login: string = 'Auth/Login';
+    private _url_requestPasswordRecovery: string = 'Auth/RequestPasswordRecovery';
+    private _url_recoverPassword: string = 'Auth/RecoverPassword';
     private _user: User | undefined;
     private _auth: Auth | undefined;
     private _httpOptions: HttpHeaders = new HttpHeaders({
@@ -21,6 +26,8 @@ export class AuthService {
     });
     private _httpOptionsMultipart: HttpHeaders = new HttpHeaders({})
     
+    private _tokenPassword: string = '';
+
     constructor( private http: HttpClient, private apiService: ApiService) {}
 
     public get user(): User {
@@ -33,6 +40,14 @@ export class AuthService {
 
     public get httpOptionsMultipart(): HttpHeaders {
         return this._httpOptionsMultipart;
+    }
+
+    public get tokenPassword(): string {
+        return this._tokenPassword;
+    }
+
+    public setTokenPassword(tokenPassword: string): void {
+        this._tokenPassword = tokenPassword;
     }
 
     public setAuth(auth: Auth): void {
@@ -110,5 +125,13 @@ export class AuthService {
             tap( user => localStorage.setItem('Email', this._auth!.Email) ),
             tap( user => localStorage.setItem('Password', this._auth!.Password) )
         );
+    }
+
+    public requestPasswordRecovery(requestPasswordRecovey: requestPasswordRecovey): Observable<response> {
+        return this.http.post<response>(`${this.apiService.urlApi}/${this._url_requestPasswordRecovery}`, requestPasswordRecovey, { headers: this._httpOptions })
+    }
+
+    public recoverPassword(recoverPassword: recoverPassword): Observable<response> {
+        return this.http.post<response>(`${this.apiService.urlApi}/${this._url_recoverPassword}`, recoverPassword, { headers: this._httpOptions })
     }
 }

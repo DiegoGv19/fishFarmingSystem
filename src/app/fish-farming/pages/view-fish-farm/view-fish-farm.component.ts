@@ -53,10 +53,12 @@ export class ViewFishFarmComponent implements OnInit, OnDestroy {
                     if( fishFarm.Code != '200') {
                         this.router.navigate(['fish-farm']);
                     }
-                    this.fishFarmService.setFishFarm(fishFarm);
-                    this.fishFarmName = this.fishFarmService.fishFarm.Name;
-                    this.fishFarmService.setDevice();
-                    this.fishFarmService.getDevices();
+                    else {
+                        this.fishFarmService.setFishFarm(fishFarm);
+                        this.fishFarmName = this.fishFarmService.fishFarm.Name;
+                        this.fishFarmService.setDevice();
+                        this.fishFarmService.getDevices();
+                    }
                 }
             )
         }); 

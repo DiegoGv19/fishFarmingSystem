@@ -1,0 +1,18 @@
+<div class="listFish">
+    <div class="listFishHead">
+        <div class="listFishHeadTitle">
+            <p>Tipos de Peces</p>
+        </div>
+    </div>
+    <div>
+        <div class="fish" *ngFor="let fish of listFish">
+            <a class="fishEmail" [routerLink]="['./view', fish!.Id]">{{ fish!.Name }}</a>
+        </div>
+        <div class="fish">
+            <a class="fishAdd" [routerLink]="['./create']">+</a>
+        </div>
+    </div>
+    <div class="noListFish" *ngIf="listFish.length == 0">
+        <p>No hay peces</p>
+    </div>
+</div>

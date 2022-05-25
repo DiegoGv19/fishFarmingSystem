@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td>Oxígeno Disuelto</td>
-            <td *ngIf="fishFarm!.LastDo">{{ fishFarm!.LastDo | number: '1.2-2' }}</td>
+            <td *ngIf="fishFarm!.LastDo">{{ fishFarm!.LastDo | number: '1.2-2' }} mg/L</td>
             <td *ngIf="!fishFarm!.LastDo">-</td>
         </tr>
     </tbody>
