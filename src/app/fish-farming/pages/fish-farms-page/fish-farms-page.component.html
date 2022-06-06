@@ -1,7 +1,7 @@
 <div class="bodyContainer">
     <app-main-header></app-main-header>
-    <main class="mainFishFarmContainer ">
-        <div class="listFishFarms">
+    <main [ngClass]="hidenList ? 'mainFishFarmContainer' : 'noMainFishFarmContainer'">
+        <div class="listFishFarms" *ngIf="hidenList">
             <app-sub-header [subMenus]='subMenus'></app-sub-header>
             <app-list-fish-farms [listFishFarmAbbreviated]="listFishFarmAbbreviated"></app-list-fish-farms>
         </div>

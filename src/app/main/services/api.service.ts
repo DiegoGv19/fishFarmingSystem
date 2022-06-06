@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-    private _urlApi: string = 'https://192.168.0.109:44366';
+    private _urlApi: string = environment.baseUrl;
 
     constructor() { }
 

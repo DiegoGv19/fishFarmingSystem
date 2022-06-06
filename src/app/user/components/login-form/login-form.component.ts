@@ -86,7 +86,7 @@ export class LoginFormComponent {
                 this.resetValidate();
                 this.authService.setHttpOptions();
                 if (user.Roles[0] == 'administrator') {
-                    this.router.navigate(['./fish-farm']);
+                    this.router.navigate(['./admin/user']);
                 }
                 else {
                     this.router.navigate(['./fish-farm']);

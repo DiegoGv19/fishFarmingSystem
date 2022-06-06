@@ -1,0 +1,32 @@
+$width-small: 400px;
+$width-medium: 800px;
+$width-long: 1200px;
+
+.logoContainer {
+    width: 80%;
+    margin: auto auto;
+    padding-top: 32px;
+
+    @media only screen and (min-width: $width-medium) {
+        width: 40%;
+    }
+}
+
+.logoFormImageTitle {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    & div {
+        cursor: pointer;
+        text-align: end;
+    }
+}
+
+.logoFormImage {
+    width: 100%;
+    max-height: 500px;
+}
+
+.saveChange {
+    width: 100%;
+}

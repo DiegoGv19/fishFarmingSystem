@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./fish-farms-page.component.scss']
 })
 export class FishFarmsPageComponent implements OnInit {
+    
     public listFishFarmAbbreviated: Array<fishFarmAbbreviated> = [];
     public subscriber: Subscription = new Subscription();
     public subMenus: Array<SubMenu> = [
@@ -39,6 +40,10 @@ export class FishFarmsPageComponent implements OnInit {
                 this.findListFishFarms();
             }
         )
+    }
+
+    public get hidenList(): boolean {
+        return this.fishFarmService.hidenList;
     }
 
     public findListFishFarms(): void {

@@ -47,6 +47,7 @@ export class FishFarmService {
     private _url_type_sensors_view: string = 'Organization/TypeSensors';
     private _url_history_view_list: string = 'FishFarms';
     private _url_history_view: string = 'FishFarms/History';
+    private _url_update_logo: string = 'Organization/UpdateLogo';
 
     private _fishFarm: fishFarm = {
         Name            : '',
@@ -75,6 +76,7 @@ export class FishFarmService {
         Code           : '',
     }
 
+    private _hidenList: boolean = true;
     private _subjectListFishFarm:Subject<void> = new Subject<void>();
     private _subjectListIot:Subject<void> = new Subject<void>();
     private _subjectHistory:Subject<void> = new Subject<void>();
@@ -92,6 +94,14 @@ export class FishFarmService {
     private _listPh : Array<deviceAbbreviated> = [];
     
     constructor(private http: HttpClient, private authService: AuthService, private apiService: ApiService) {}
+
+    public get hidenList(): boolean {
+        return this._hidenList;
+    }
+
+    public setHidenList(hidenList: boolean): void {
+        this._hidenList = hidenList;
+    }
 
     public get subjectListFishFarm():Subject<void> {
         return this._subjectListFishFarm;
@@ -377,5 +387,9 @@ export class FishFarmService {
 
     public findHistory(): Observable<historyView> {
         return this.http.get<historyView>(`${this.apiService.urlApi}/${this._url_history_view}/${this._historyId}`, { headers: this.authService.httpOptions });
+    }
+
+    public updateLogo(formLogo: FormData): Observable<response> {
+        return this.http.put<response>(`${this.apiService.urlApi}/${this._url_update_logo}`, formLogo ,{ headers: this.authService.httpOptionsMultipart });
     }
 }

@@ -10,6 +10,7 @@ import { ShoddyHistoryComponent } from './pages/shoddy-history/shoddy-history.co
 import { ViewFishFarmComponent } from './pages/view-fish-farm/view-fish-farm.component';
 import { ViewShoddyComponent } from './pages/view-shoddy/view-shoddy.component';
 import { EditFishFarmComponent } from './pages/edit-fish-farm/edit-fish-farm.component';
+import { ConfigurationComponent } from './pages/configuration/configuration.component';
 
 const routes: Routes = [
 {
@@ -71,6 +72,10 @@ const routes: Routes = [
     {
         path: 'general-configuration',
         component: GeneralConfigurationComponent,
+    },
+    {
+        path: 'configuration',
+        component: ConfigurationComponent,
     }
     ]
 }
